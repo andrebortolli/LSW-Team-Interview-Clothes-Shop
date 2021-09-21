@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ScriptableObjectExtensions.Variables;
 
 public class CameraFocusObject : MonoBehaviour
 {
     public GameObject objectToFocus;
+    public FloatVariable cameraFollowSpeed;
     private Vector3 offset;
     private float cameraZOnStart;
 
@@ -16,7 +18,7 @@ public class CameraFocusObject : MonoBehaviour
 
     void LateUpdate()
     {
-        Vector2 cameraPosition = Vector2.Lerp(transform.position, objectToFocus.transform.position + offset, Time.deltaTime * 5.0f);
+        Vector2 cameraPosition = Vector2.Lerp(transform.position, objectToFocus.transform.position + offset, Time.deltaTime * cameraFollowSpeed.Value);
         transform.position = new Vector3(cameraPosition.x, cameraPosition.y, cameraZOnStart);
     }
 }
