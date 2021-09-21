@@ -47,6 +47,9 @@ TagManager:
   - name: Walls
     uniqueID: 2282620845
     locked: 0
+  - name: NPC
+    uniqueID: 3621741251
+    locked: 0
   - name: Furniture
     uniqueID: 3370053845
     locked: 0
