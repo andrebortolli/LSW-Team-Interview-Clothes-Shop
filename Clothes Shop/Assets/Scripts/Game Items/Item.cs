@@ -7,18 +7,16 @@ using UnityEngine.Events;
 
 namespace ClothesShop.SO.Item
 {
+    /// <summary>
+    /// This class represents an in-game item
+    /// </summary>
     [Serializable]
     public class Item : ScriptableObject
     {
-        [SerializeField]
         public int id; //Item ID
-        [SerializeField]
         public string description; //Item description
-        [SerializeField]
-        public int price; //Item buying price
-        [SerializeField]
-        public int resellPrice; //Item selling price
-        [SerializeField]
+        public int value; //Item buying value
+        public int resellValue; //Item selling value
         public Sprite uiSprite; //Sprite shown in the UI
     }
 }
