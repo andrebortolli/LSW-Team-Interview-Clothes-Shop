@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/ClothesShop.unity
+    guid: e4254dde8940b5e4d9d3aa1c87f89210
   m_configObjects: {}
