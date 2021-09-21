@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using ClothesShop.SO.Inventory;
+using ScriptableObjectExtensions.Variables;
 
 namespace ClothesShop.SO.Player
 {
     public class Player : ScriptableObject
     {
-        public string id;
-        public string playerName;
+        public int id;
+        public StringVariable playerName;
         public Inventory.Inventory inventory;
-        public int wallet;
+        public IntVariable wallet;
     }
 }

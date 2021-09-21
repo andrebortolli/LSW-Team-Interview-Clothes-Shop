@@ -13,11 +13,11 @@ TagManager:
   - UI
   - 
   - 
-  - Floor
-  - Walls
-  - Furniture
-  - FurnitureOverlay
-  - Ceiling
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -40,4 +40,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Floor
+    uniqueID: 1254451781
+    locked: 0
+  - name: Walls
+    uniqueID: 2282620845
+    locked: 0
+  - name: Furniture
+    uniqueID: 3370053845
+    locked: 0
+  - name: Player
+    uniqueID: 3480384087
+    locked: 0
+  - name: Ceiling
+    uniqueID: 3480534043
     locked: 0
