@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f428549419e19824cb090345ef71c6bf, type: 3}
+  m_Name: The First Item
+  m_EditorClassIdentifier: 
+  id: 0
+  description: This is the first item ever to be made in this project :)
+  price: 10
+  resellPrice: 9000
+  itemType: 0
+  uiSprite: {fileID: 0}
