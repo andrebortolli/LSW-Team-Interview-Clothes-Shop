@@ -167,11 +167,11 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetKey(GameSettings.RunKey))
         {
-            playerRigidbody.velocity = timeFixedMovementValues * runningSpeed.Value;
+            playerRigidbody.MovePosition(playerRigidbody.position + timeFixedMovementValues * runningSpeed.Value);
         }
         else
         {
-            playerRigidbody.velocity = timeFixedMovementValues * walkingSpeed.Value;
+            playerRigidbody.MovePosition(playerRigidbody.position + timeFixedMovementValues * walkingSpeed.Value);
         }
 
         //Update animator parameters

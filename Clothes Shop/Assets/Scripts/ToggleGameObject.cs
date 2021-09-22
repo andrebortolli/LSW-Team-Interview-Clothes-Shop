@@ -14,6 +14,11 @@ namespace ClothesShop.Miscellaneous
             gameObjectActiveState = gameObjectToToggle.activeSelf;
         }
 
+        public void SetState(bool _State)
+        {
+            gameObjectToToggle.SetActive(_State);
+        }
+
         public void Toggle()
         {
             gameObjectToToggle.SetActive(!gameObjectToToggle.activeSelf);
