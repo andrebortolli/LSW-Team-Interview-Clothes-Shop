@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: The First Cloth
   m_EditorClassIdentifier: 
   id: 1
+  itemName: The First Cloth
   description: This is the first cloth ever to be created in this project :)
-  price: 2
-  resellPrice: 2
-  uiSprite: {fileID: 0}
+  value: 100
+  resellValue: 200
+  uiSprite: {fileID: -2725728968253761336, guid: 26a1f75069f5a704798634759c62122b,
+    type: 3}

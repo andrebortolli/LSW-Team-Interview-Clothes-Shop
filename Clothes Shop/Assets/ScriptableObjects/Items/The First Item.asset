@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: The First Item
   m_EditorClassIdentifier: 
   id: 0
+  itemName: The First Item
   description: This is the first item ever to be made in this project :)
-  price: 10
-  resellPrice: 9000
-  itemType: 0
-  uiSprite: {fileID: 0}
+  value: 100
+  resellValue: 200
+  uiSprite: {fileID: 7317196789796828050, guid: 26a1f75069f5a704798634759c62122b,
+    type: 3}

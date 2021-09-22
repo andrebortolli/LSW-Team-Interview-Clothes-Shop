@@ -11,8 +11,11 @@ using ScriptableObjectExtensions.Variables;
 
 public class PlayerController : MonoBehaviour
 {
-    public Player playerData;
-    public FloatVariable walkingSpeed;
+    [Header("Player Settings")]
+    [SerializeField] private Player playerData;
+    [SerializeField] private FloatVariable walkingSpeed;
+    [SerializeField] private FloatVariable runningSpeed;
+
 
     private Animator playerAnimator;
     private Rigidbody2D playerRigidbody;
@@ -40,13 +43,13 @@ public class PlayerController : MonoBehaviour
     private void OnInteractableInReach(Interactable interactable)
     {
         interactableObject = interactable;
-        Debug.Log("Interactable in reach!" + interactable.gameObject.name);
+        Debug.Log("Interactable in reach: " + interactable.gameObject.name);
     }
 
     private void OnInteractableNotInReach(Interactable interactable)
     {
         interactableObject = null;
-        Debug.Log("Interactable out of reach!" + interactable.gameObject.name);
+        Debug.Log("Interactable out of reach: " + interactable.gameObject.name);
     }
 
     private void Awake()
@@ -160,7 +163,16 @@ public class PlayerController : MonoBehaviour
         Vector2 movementAxesValues = Get4WayPlayerMovement();
 
         //Sets the player's rigidbody's velocity
-        playerRigidbody.velocity = new Vector2(movementAxesValues.x * walkingSpeed.Value, movementAxesValues.y * walkingSpeed.Value) * Time.fixedDeltaTime;
+        Vector2 timeFixedMovementValues = new Vector2(movementAxesValues.x, movementAxesValues.y) * Time.fixedDeltaTime;
+
+        if(Input.GetKey(GameSettings.RunKey))
+        {
+            playerRigidbody.velocity = timeFixedMovementValues * runningSpeed.Value;
+        }
+        else
+        {
+            playerRigidbody.velocity = timeFixedMovementValues * walkingSpeed.Value;
+        }
 
         //Update animator parameters
         playerAnimator.SetFloat(horizontalMovementParameterName, movementAxesValues.x);

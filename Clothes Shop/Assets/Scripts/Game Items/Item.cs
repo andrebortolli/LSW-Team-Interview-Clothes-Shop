@@ -14,6 +14,7 @@ namespace ClothesShop.SO.Item
     public class Item : ScriptableObject
     {
         public int id; //Item ID
+        public string itemName; //Item name
         public string description; //Item description
         public int value; //Item buying value
         public int resellValue; //Item selling value

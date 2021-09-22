@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4636982bef2d9d446acfb9274c29be9a, type: 3}
-  m_Name: Gold Ore Box
+  m_Script: {fileID: 11500000, guid: 09f651a60d99755489da9a292f70e822, type: 3}
+  m_Name: Player Running Speed
   m_EditorClassIdentifier: 
-  textToDisplay: You found a box full of Gold Ores! These are definitely really expensive!
+  DeveloperDescription: 
+  Value: 384

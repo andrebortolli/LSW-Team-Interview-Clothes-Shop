@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4636982bef2d9d446acfb9274c29be9a, type: 3}
-  m_Name: Gold Ore Box
+  m_Name: Furnace
   m_EditorClassIdentifier: 
-  textToDisplay: You found a box full of Gold Ores! These are definitely really expensive!
+  textToDisplay: You found a furnace! Hot to the touch!
