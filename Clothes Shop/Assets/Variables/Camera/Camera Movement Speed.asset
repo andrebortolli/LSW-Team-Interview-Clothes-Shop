@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Camera Movement Speed
   m_EditorClassIdentifier: 
   DeveloperDescription: 
-  Value: 7.5
+  Value: 5
