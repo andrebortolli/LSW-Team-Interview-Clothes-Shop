@@ -15,5 +15,7 @@ MonoBehaviour:
   speechStyle: 1
   speakerName: Debug
   speechText: This is simple speaker style. There shouldn't be any other objects
-    besides the text and the speaker name
+    besides this  text and the speaker name. Also this will probably exceed the per
+    page character limit, making it span across multiple pages.
   speakerSprite: {fileID: 0}
+  isQuestion: 0

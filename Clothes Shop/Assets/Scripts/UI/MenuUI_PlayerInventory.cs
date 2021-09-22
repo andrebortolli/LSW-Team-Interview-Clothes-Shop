@@ -4,6 +4,7 @@ using UnityEngine;
 using ClothesShop.SO.Item;
 using ClothesShop.SO.Inventory;
 using TMPro;
+using UnityEngine.UI;
 
 namespace ClothesShop.UI.Menus
 {

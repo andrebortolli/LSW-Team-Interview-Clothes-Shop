@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2cd890bbfeb81594299c2abdc33aa78d, type: 3}
-  m_Name: Debug 5
+  m_Name: Debug 10
   m_EditorClassIdentifier: 
   speechStyle: 2
   speakerName: Debug
-  speechText: This Luka Curious 01
-  speakerSprite: {fileID: 21300000, guid: 63c81b1c3e53cfe47b049b82a9d3bdc6, type: 3}
+  speechText: This is Luka SadSmile 01
+  speakerSprite: {fileID: 21300000, guid: fff594a4a4d0e9545a54c0f902b8535e, type: 3}
   isQuestion: 0

@@ -5,14 +5,17 @@ using UnityEngine;
 using UnityEngine.Events;
 using ClothesShop.SO.Item;
 using ClothesShop.SO.Player.NPC;
+using ClothesShop.Trade;
 using ScriptableObjectExtensions.Variables;
+using ClothesShop.SO.Player;
+using ClothesShop.Players;
 
 namespace ClothesShop.Shop
 {
+    [RequireComponent(typeof(PlayerData))]
     public class ShopController : MonoBehaviour
     {
-        [Header("Shopkeeper NPC Data")]
-        public NPCPlayer shopkeeperNPCPlayerData;
+        private PlayerData playerData;
 
         #region Events
 
@@ -26,5 +29,10 @@ namespace ClothesShop.Shop
 
         public OnItemSell onItemSell;
         #endregion
+
+        private void Awake()
+        {
+            playerData = GetComponent<PlayerData>();
+        }
     }
 }

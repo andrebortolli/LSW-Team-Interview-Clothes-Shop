@@ -9,188 +9,193 @@ using ClothesShop.Mechanics.Interaction;
 using ClothesShop.Settings;
 using ScriptableObjectExtensions.Variables;
 
-public class PlayerController : MonoBehaviour
+namespace ClothesShop.Players
 {
-    [Header("Player Settings")]
-    [SerializeField] private Player playerData;
-    [SerializeField] private FloatVariable walkingSpeed;
-    [SerializeField] private FloatVariable runningSpeed;
-
-
-    private Animator playerAnimator;
-    private Rigidbody2D playerRigidbody;
-    private Interactable interactableObject;
-
-    #region Animator Parameters
-
-    [Header("Animator Parameters")]
-    public string horizontalMovementParameterName;
-    public string verticalMovementParameterName;
-
-    #endregion
-
-    #region Events
-    [Serializable]
-    public class OnInteractableWithinReach : UnityEvent<Interactable> { }
-    [Serializable]
-    public class OnInteractableOutOfReach : UnityEvent<Interactable> { }
-
-    public OnInteractableWithinReach onInteractableWithinReach;
-    public OnInteractableOutOfReach onInteractableOutOfReach;
-
-    #endregion
-
-    private void OnInteractableInReach(Interactable interactable)
+    [RequireComponent(typeof(PlayerData))]
+    public class PlayerController : MonoBehaviour
     {
-        interactableObject = interactable;
-        Debug.Log("Interactable in reach: " + interactable.gameObject.name);
-    }
+        [Header("Player Settings")]
+        private PlayerData playerData;
+        [SerializeField] private FloatVariable walkingSpeed;
+        [SerializeField] private FloatVariable runningSpeed;
 
-    private void OnInteractableNotInReach(Interactable interactable)
-    {
-        interactableObject = null;
-        Debug.Log("Interactable out of reach: " + interactable.gameObject.name);
-    }
 
-    private void Awake()
-    {
-        playerAnimator = GetComponent<Animator>();
-        playerRigidbody = GetComponent<Rigidbody2D>();
-    }
+        private Animator playerAnimator;
+        private Rigidbody2D playerRigidbody;
+        private Interactable interactableObject;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        Debug.Log(playerData.id + playerData.playerName.Value);
-    }
+        #region Animator Parameters
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (!GameManager.Instance.GamePaused)
+        [Header("Animator Parameters")]
+        public string horizontalMovementParameterName;
+        public string verticalMovementParameterName;
+
+        #endregion
+
+        #region Events
+        [Serializable]
+        public class OnInteractableWithinReach : UnityEvent<Interactable> { }
+        [Serializable]
+        public class OnInteractableOutOfReach : UnityEvent<Interactable> { }
+
+        public OnInteractableWithinReach onInteractableWithinReach;
+        public OnInteractableOutOfReach onInteractableOutOfReach;
+
+        #endregion
+
+        private void OnInteractableInReach(Interactable interactable)
         {
-            if (Input.GetKeyDown(GameSettings.InteractionKey) && interactableObject != null)
+            interactableObject = interactable;
+            Debug.Log("Interactable in reach: " + interactable.gameObject.name);
+        }
+
+        private void OnInteractableNotInReach(Interactable interactable)
+        {
+            interactableObject = null;
+            Debug.Log("Interactable out of reach: " + interactable.gameObject.name);
+        }
+
+        private void Awake()
+        {
+            playerData = GetComponent<PlayerData>();
+            playerAnimator = GetComponent<Animator>();
+            playerRigidbody = GetComponent<Rigidbody2D>();
+        }
+
+        // Start is called before the first frame update
+        void Start()
+        {
+            Debug.Log(playerData.data.id + playerData.data.playerName.Value);
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (!GameManager.Instance.GamePaused)
             {
-                interactableObject.onInteraction?.Invoke(ClothesShop.Managers.GameManager.Instance, this.gameObject, interactableObject.gameObject);
+                if (Input.GetKeyDown(GameSettings.InteractionKey) && interactableObject != null)
+                {
+                    interactableObject.onInteraction?.Invoke(ClothesShop.Managers.GameManager.Instance, this.gameObject, interactableObject.gameObject);
+                }
             }
         }
-    }
 
-    private void OnEnable()
-    {
-        onInteractableWithinReach.AddListener(OnInteractableInReach);
-        onInteractableOutOfReach.AddListener(OnInteractableNotInReach);
-    }
-
-    private void OnDisable()
-    {
-        onInteractableWithinReach.RemoveListener(OnInteractableInReach);
-        onInteractableOutOfReach.RemoveListener(OnInteractableNotInReach);
-    }
-
-    private void FixedUpdate()
-    {
-        if (!GameManager.Instance.GamePaused)
+        private void OnEnable()
         {
-            PlayerMovement();
+            onInteractableWithinReach.AddListener(OnInteractableInReach);
+            onInteractableOutOfReach.AddListener(OnInteractableNotInReach);
         }
-    }
 
-    /// <summary>
-    /// Returns a unitary vector in a 4-way movement style, depending on the user input. Does not allow more than one key to be pressed at the same time.
-    /// </summary>
-    /// <returns></returns>
-    private Vector2 Get4WayPlayerMovement()
-    {
-        Vector2 returnValue;
-        float horizontalInputValue = Input.GetAxisRaw("Horizontal");
-        float verticalInputValue = Input.GetAxisRaw("Vertical");
-
-        //The following code will make it so that only 4-axis movements are valid.
-        if (horizontalInputValue > 0)
+        private void OnDisable()
         {
-            if (verticalInputValue == 0)
+            onInteractableWithinReach.RemoveListener(OnInteractableInReach);
+            onInteractableOutOfReach.RemoveListener(OnInteractableNotInReach);
+        }
+
+        private void FixedUpdate()
+        {
+            if (!GameManager.Instance.GamePaused)
             {
-                returnValue = Vector2.right;
+                PlayerMovement();
+            }
+        }
+
+        /// <summary>
+        /// Returns a unitary vector in a 4-way movement style, depending on the user input. Does not allow more than one key to be pressed at the same time.
+        /// </summary>
+        /// <returns></returns>
+        private Vector2 Get4WayPlayerMovement()
+        {
+            Vector2 returnValue;
+            float horizontalInputValue = Input.GetAxisRaw("Horizontal");
+            float verticalInputValue = Input.GetAxisRaw("Vertical");
+
+            //The following code will make it so that only 4-axis movements are valid.
+            if (horizontalInputValue > 0)
+            {
+                if (verticalInputValue == 0)
+                {
+                    returnValue = Vector2.right;
+                }
+                else
+                {
+                    returnValue = Vector2.zero;
+                }
+            }
+            else if (horizontalInputValue < 0)
+            {
+                if (verticalInputValue == 0)
+                {
+                    returnValue = Vector2.left;
+                }
+                else
+                {
+                    returnValue = Vector2.zero;
+                }
+            }
+            else if (verticalInputValue > 0)
+            {
+                if (horizontalInputValue == 0)
+                {
+                    returnValue = Vector2.up;
+                }
+                else
+                {
+                    returnValue = Vector2.zero;
+                }
+            }
+            else if (verticalInputValue < 0)
+            {
+                if (horizontalInputValue == 0)
+                {
+                    returnValue = Vector2.down;
+                }
+                else
+                {
+                    returnValue = Vector2.zero;
+                }
             }
             else
             {
                 returnValue = Vector2.zero;
             }
+            return returnValue;
         }
-        else if (horizontalInputValue < 0)
+
+        private void PlayerMovement()
         {
-            if (verticalInputValue == 0)
+            Vector2 movementAxesValues = Get4WayPlayerMovement();
+
+            //Sets the player's rigidbody's velocity
+            Vector2 timeFixedMovementValues = new Vector2(movementAxesValues.x, movementAxesValues.y) * Time.fixedDeltaTime;
+
+            if (Input.GetKey(GameSettings.RunKey))
             {
-                returnValue = Vector2.left;
+                playerRigidbody.MovePosition(playerRigidbody.position + timeFixedMovementValues * runningSpeed.Value);
             }
             else
             {
-                returnValue = Vector2.zero;
+                playerRigidbody.MovePosition(playerRigidbody.position + timeFixedMovementValues * walkingSpeed.Value);
             }
+
+            //Update animator parameters
+            playerAnimator.SetFloat(horizontalMovementParameterName, movementAxesValues.x);
+            playerAnimator.SetFloat(verticalMovementParameterName, movementAxesValues.y);
         }
-        else if (verticalInputValue > 0)
+
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (horizontalInputValue == 0)
+            if (collision.gameObject.tag == "Interactable")
             {
-                returnValue = Vector2.up;
+                onInteractableWithinReach?.Invoke(collision.gameObject.GetComponent<Interactable>());
             }
-            else
+        }
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.gameObject.tag == "Interactable")
             {
-                returnValue = Vector2.zero;
+                onInteractableOutOfReach?.Invoke(collision.gameObject.GetComponent<Interactable>());
             }
-        }
-        else if (verticalInputValue < 0)
-        {
-            if (horizontalInputValue == 0)
-            {
-                returnValue = Vector2.down;
-            }
-            else
-            {
-                returnValue = Vector2.zero;
-            }
-        }
-        else
-        {
-            returnValue = Vector2.zero;
-        }
-        return returnValue;
-    }
-
-    private void PlayerMovement()
-    {
-        Vector2 movementAxesValues = Get4WayPlayerMovement();
-
-        //Sets the player's rigidbody's velocity
-        Vector2 timeFixedMovementValues = new Vector2(movementAxesValues.x, movementAxesValues.y) * Time.fixedDeltaTime;
-
-        if(Input.GetKey(GameSettings.RunKey))
-        {
-            playerRigidbody.MovePosition(playerRigidbody.position + timeFixedMovementValues * runningSpeed.Value);
-        }
-        else
-        {
-            playerRigidbody.MovePosition(playerRigidbody.position + timeFixedMovementValues * walkingSpeed.Value);
-        }
-
-        //Update animator parameters
-        playerAnimator.SetFloat(horizontalMovementParameterName, movementAxesValues.x);
-        playerAnimator.SetFloat(verticalMovementParameterName, movementAxesValues.y);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Interactable")
-        {
-            onInteractableWithinReach?.Invoke(collision.gameObject.GetComponent<Interactable>());
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Interactable")
-        {
-            onInteractableOutOfReach?.Invoke(collision.gameObject.GetComponent<Interactable>());
         }
     }
 }

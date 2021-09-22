@@ -22,12 +22,14 @@ namespace ClothesShop.UI
 
         #region Events
         [Serializable] public class OnTextAnimationStarted : UnityEvent { }
+        [Serializable] public class OnTextAnimationUpdate : UnityEvent { }
         [Serializable] public class OnTextAnimationPageFinished : UnityEvent { }
         [Serializable] public class OnTextAnimationNewPage : UnityEvent { }
         [Serializable] public class OnTextAnimationFinished : UnityEvent { }
 
         [Header("Events")]
         public OnTextAnimationStarted onTextAnimationStarted;
+        public OnTextAnimationUpdate onTextAnimationUpdate;
         public OnTextAnimationPageFinished onTextAnimationPageFinished;
         public OnTextAnimationNewPage onTextAnimationNewPage;
         public OnTextAnimationFinished onTextAnimationFinished;
@@ -99,6 +101,7 @@ namespace ClothesShop.UI
                 {
                     isAnimating = true;
                     textMeshProUGUI.text += pages[i][j];
+                    onTextAnimationUpdate?.Invoke();
                     yield return new WaitForSeconds(currentWriteSpeed);
 
                     if (j + 1 >= pages[i].Length)

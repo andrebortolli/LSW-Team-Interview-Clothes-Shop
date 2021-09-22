@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd890bbfeb81594299c2abdc33aa78d, type: 3}
   m_Name: Debug 4
   m_EditorClassIdentifier: 
-  speechStyle: 0
-  speakerName: 
-  speechText: This is simple style. There shouldn't be any other objects besides
-    the text.
-  speakerSprite: {fileID: 0}
-  isQuestion: 1
+  speechStyle: 2
+  speakerName: Debug
+  speechText: This is Luka Angry 01
+  speakerSprite: {fileID: 21300000, guid: 326a40fd95a2d0c4ca975b0fdd9814cf, type: 3}
+  isQuestion: 0

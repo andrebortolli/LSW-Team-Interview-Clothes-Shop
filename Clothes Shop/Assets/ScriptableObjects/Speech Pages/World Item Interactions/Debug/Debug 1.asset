@@ -15,5 +15,6 @@ MonoBehaviour:
   speechStyle: 0
   speakerName: 
   speechText: This is simple style. There shouldn't be any other objects besides
-    the text.
+    this text.
   speakerSprite: {fileID: 0}
+  isQuestion: 0
