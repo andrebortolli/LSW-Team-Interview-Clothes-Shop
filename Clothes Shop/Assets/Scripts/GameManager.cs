@@ -17,8 +17,6 @@ namespace ClothesShop.Managers
 
         public SpeechPanelManager SpeechPanelManager { get => Managers.SpeechPanelManager.Instance; }
 
-        public PlayerController player;
-
         private bool gamePaused = false;
         public bool GamePaused { get => gamePaused; }
 

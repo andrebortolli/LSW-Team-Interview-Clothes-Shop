@@ -22,13 +22,22 @@ namespace ClothesShop.UI.Menus
             UpdateContents();
         }
 
+        private void OnDisable()
+        {
+            ClearContents();
+        }
+
         public void ClearContents()
         {
-            
+            foreach (Transform child in contentsTransform.transform)
+            {
+                GameObject.Destroy(child.gameObject);
+            }
         }
 
         public void UpdateContents()
         {
+            ClearContents();
             foreach(Item item in playerInventory.Items)
             {
                 GameObject itemMenuPrefabInstance = Instantiate(itemMenuPrefab, contentsTransform);
