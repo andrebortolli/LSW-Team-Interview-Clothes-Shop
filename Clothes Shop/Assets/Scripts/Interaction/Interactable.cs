@@ -9,7 +9,7 @@ namespace ClothesShop.Mechanics.Interaction
     public class Interactable : MonoBehaviour
     {
         [Serializable]
-        public class OnInteraction : UnityEvent<GameObject, GameObject> { }
+        public class OnInteraction : UnityEvent<Managers.GameManager, GameObject, GameObject> { }
 
         public OnInteraction onInteraction;
     }

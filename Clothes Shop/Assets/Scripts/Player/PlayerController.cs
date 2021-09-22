@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using ClothesShop.Managers;
 using ClothesShop.SO.Player;
 using ClothesShop.Mechanics.Interaction;
+using ClothesShop.Settings;
 using ScriptableObjectExtensions.Variables;
 
 public class PlayerController : MonoBehaviour
@@ -62,9 +64,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z) && interactableObject != null)
+        if (!GameManager.Instance.GamePaused)
         {
-            interactableObject.onInteraction?.Invoke(this.gameObject, interactableObject.gameObject);
+            if (Input.GetKeyDown(GameSettings.InteractionKey) && interactableObject != null)
+            {
+                interactableObject.onInteraction?.Invoke(ClothesShop.Managers.GameManager.Instance, this.gameObject, interactableObject.gameObject);
+            }
         }
     }
 
@@ -82,7 +87,10 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        PlayerMovement();
+        if (!GameManager.Instance.GamePaused)
+        {
+            PlayerMovement();
+        }
     }
 
     /// <summary>

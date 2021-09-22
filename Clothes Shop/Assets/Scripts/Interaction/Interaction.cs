@@ -8,6 +8,6 @@ namespace ClothesShop.Mechanics.Interaction
     [Serializable]
     public abstract class Interaction : ScriptableObject
     {
-        public abstract void OnInteraction(GameObject _interactionSourceGameObject, GameObject _interactedGameObject);
+        public abstract void OnInteraction(Managers.GameManager _gameManager, GameObject _interactionSourceGameObject, GameObject _interactedGameObject);
     }
 }
