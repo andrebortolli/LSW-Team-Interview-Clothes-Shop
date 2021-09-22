@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e9b8bd7255c9b408c8ba7795ec0422, type: 3}
   m_Name: Shopkeeper Luka Interaction
   m_EditorClassIdentifier: 
-  textToDisplay: 
+  textToDisplay: Hello there, {0}! Welcome to my shop!
