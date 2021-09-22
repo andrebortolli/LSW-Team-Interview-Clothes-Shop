@@ -9,9 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4636982bef2d9d446acfb9274c29be9a, type: 3}
-  m_Name: Furnace
+  m_Script: {fileID: 11500000, guid: 2cd890bbfeb81594299c2abdc33aa78d, type: 3}
+  m_Name: Gold Ore Box - Page 1
   m_EditorClassIdentifier: 
-  pagesToDisplay:
-  - {fileID: 11400000, guid: b8bfd93e421fc9f46a0827203a520276, type: 2}
-  - {fileID: 11400000, guid: 66f48dd796eb17243841f815f53450c8, type: 2}
+  speakerName: 
+  speechText: You've found a gold ore box!
+  speakerSprite: {fileID: 0}
+  speechStyle: 0
+  speakerNPC: {fileID: 0}
+  searchByName: 
+  searchByIndex: 0
+  randomByMood: 0

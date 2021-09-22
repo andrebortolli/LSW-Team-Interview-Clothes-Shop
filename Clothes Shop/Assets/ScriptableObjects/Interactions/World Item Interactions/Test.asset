@@ -10,8 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4636982bef2d9d446acfb9274c29be9a, type: 3}
-  m_Name: Furnace
+  m_Name: Test
   m_EditorClassIdentifier: 
   pagesToDisplay:
-  - {fileID: 11400000, guid: b8bfd93e421fc9f46a0827203a520276, type: 2}
-  - {fileID: 11400000, guid: 66f48dd796eb17243841f815f53450c8, type: 2}
+  - {fileID: 11400000, guid: 5c5eeeb97c1639a46bd1ddba5fac74c2, type: 2}

@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4636982bef2d9d446acfb9274c29be9a, type: 3}
   m_Name: Gold Ore Box
   m_EditorClassIdentifier: 
-  textToDisplay: You found a box full of Gold Ores! These are definitely really expensive!
+  pagesToDisplay:
+  - {fileID: 11400000, guid: f0270be3df18050469c1f64a00551a84, type: 2}
+  - {fileID: 11400000, guid: a015107f5ce4bc54ab535e15b5096d13, type: 2}

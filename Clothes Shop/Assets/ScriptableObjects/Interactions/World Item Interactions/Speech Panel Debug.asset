@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4636982bef2d9d446acfb9274c29be9a, type: 3}
-  m_Name: Furnace
+  m_Name: Speech Panel Debug
   m_EditorClassIdentifier: 
   pagesToDisplay:
-  - {fileID: 11400000, guid: b8bfd93e421fc9f46a0827203a520276, type: 2}
-  - {fileID: 11400000, guid: 66f48dd796eb17243841f815f53450c8, type: 2}
+  - {fileID: 11400000, guid: aedcb13629e43a14ab078215d04e4797, type: 2}
+  - {fileID: 11400000, guid: 7a09442849d534f478a77ba0752aeed7, type: 2}
+  - {fileID: 11400000, guid: d774f45eee2678245a26c6cb7f87a1cf, type: 2}

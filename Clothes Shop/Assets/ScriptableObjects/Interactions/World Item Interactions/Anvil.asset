@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4636982bef2d9d446acfb9274c29be9a, type: 3}
   m_Name: Anvil
   m_EditorClassIdentifier: 
-  textToDisplay: This is an Anvil. It seems very heavy and sturdy!
+  pagesToDisplay:
+  - {fileID: 11400000, guid: b2ba7ba697850e144a8efef4dd28ac4c, type: 2}
+  - {fileID: 11400000, guid: c1d3fda283512ef46895cecfdfadf087, type: 2}
