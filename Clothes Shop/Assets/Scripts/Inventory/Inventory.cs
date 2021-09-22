@@ -26,6 +26,15 @@ namespace ClothesShop.SO.Inventory
         }
 
         /// <summary>
+        /// Removes a specified item
+        /// </summary>
+        /// <param name="_itemToRemove"></param>
+        public void RemoveItem(Item.Item _itemToRemove)
+        {
+            Items.Remove(_itemToRemove);
+        }
+
+        /// <summary>
         /// Adds a specified item to the inventory.
         /// </summary>
         /// <param name="_itemToAdd"></param>

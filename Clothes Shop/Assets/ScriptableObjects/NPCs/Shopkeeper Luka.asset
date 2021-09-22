@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02c7ecd937843ca4b8ecf781eb092fde, type: 3}
+  m_Name: Shopkeeper Luka
+  m_EditorClassIdentifier: 
+  id: 1
+  playerName: {fileID: 11400000, guid: edc491b980bf9cd43817218c548c4287, type: 2}
+  inventory: {fileID: 11400000, guid: eb41b277eda2f574b8afa4aba8cf3e31, type: 2}
+  wallet: {fileID: 11400000, guid: b126f8f3f46870148ba4e3a317a7628b, type: 2}
+  npcShopPortraits:
+    npcShopPortraits:
+    - portraitName: Angry 01
+      portaitMood: 3
+      portraitSprite: {fileID: 21300000, guid: 326a40fd95a2d0c4ca975b0fdd9814cf, type: 3}
+    - portraitName: Curious 01
+      portaitMood: 4
+      portraitSprite: {fileID: 21300000, guid: 63c81b1c3e53cfe47b049b82a9d3bdc6, type: 3}
+    - portraitName: Neutral 01
+      portaitMood: 0
+      portraitSprite: {fileID: 21300000, guid: fe4e43604806baa4185226f28df16c0d, type: 3}
+    - portraitName: Neutral 02
+      portaitMood: 0
+      portraitSprite: {fileID: 21300000, guid: a212dfd44b3c04241b35add44cbfbf42, type: 3}
+    - portraitName: Sad 01
+      portaitMood: 2
+      portraitSprite: {fileID: 21300000, guid: 4c93ec6bfd09f524fa8401c2240c23ef, type: 3}
+    - portraitName: Sad 02
+      portaitMood: 2
+      portraitSprite: {fileID: 21300000, guid: dab13de1edc6696489134d0dea506031, type: 3}
+    - portraitName: SadSmile 01
+      portaitMood: 2
+      portraitSprite: {fileID: 21300000, guid: fff594a4a4d0e9545a54c0f902b8535e, type: 3}
+    - portraitName: Sly 01
+      portaitMood: 6
+      portraitSprite: {fileID: 21300000, guid: 694a5de694b5c1742adfd824c5c1c13e, type: 3}
+    - portraitName: Smile 01
+      portaitMood: 1
+      portraitSprite: {fileID: 21300000, guid: 02c296088ae636b459e0231b48abb033, type: 3}
+    - portraitName: Sus 01
+      portaitMood: 5
+      portraitSprite: {fileID: 21300000, guid: 8f14079be5ea4e24eb3755cdc9d663dd, type: 3}

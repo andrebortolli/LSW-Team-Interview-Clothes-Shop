@@ -1,7 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using ClothesShop.SO.Player;
+using ClothesShop.Mechanics.Interaction;
 using ScriptableObjectExtensions.Variables;
 
 public class PlayerController : MonoBehaviour
@@ -11,6 +14,7 @@ public class PlayerController : MonoBehaviour
 
     private Animator playerAnimator;
     private Rigidbody2D playerRigidbody;
+    private Interactable interactableObject;
 
     #region Animator Parameters
 
@@ -19,6 +23,29 @@ public class PlayerController : MonoBehaviour
     public string verticalMovementParameterName;
 
     #endregion
+
+    #region Events
+    [Serializable]
+    public class OnInteractableWithinReach : UnityEvent<Interactable> { }
+    [Serializable]
+    public class OnInteractableOutOfReach : UnityEvent<Interactable> { }
+
+    public OnInteractableWithinReach onInteractableWithinReach;
+    public OnInteractableOutOfReach onInteractableOutOfReach;
+
+    #endregion
+
+    private void OnInteractableInReach(Interactable interactable)
+    {
+        interactableObject = interactable;
+        Debug.Log("Interactable in reach!" + interactable.gameObject.name);
+    }
+
+    private void OnInteractableNotInReach(Interactable interactable)
+    {
+        interactableObject = null;
+        Debug.Log("Interactable out of reach!" + interactable.gameObject.name);
+    }
 
     private void Awake()
     {
@@ -35,7 +62,22 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Z) && interactableObject != null)
+        {
+            interactableObject.onInteraction?.Invoke(this.gameObject, interactableObject.gameObject);
+        }
+    }
 
+    private void OnEnable()
+    {
+        onInteractableWithinReach.AddListener(OnInteractableInReach);
+        onInteractableOutOfReach.AddListener(OnInteractableNotInReach);
+    }
+
+    private void OnDisable()
+    {
+        onInteractableWithinReach.RemoveListener(OnInteractableInReach);
+        onInteractableOutOfReach.RemoveListener(OnInteractableNotInReach);
     }
 
     private void FixedUpdate()
@@ -108,12 +150,27 @@ public class PlayerController : MonoBehaviour
     private void PlayerMovement()
     {
         Vector2 movementAxesValues = Get4WayPlayerMovement();
-     
+
         //Sets the player's rigidbody's velocity
         playerRigidbody.velocity = new Vector2(movementAxesValues.x * walkingSpeed.Value, movementAxesValues.y * walkingSpeed.Value) * Time.fixedDeltaTime;
 
         //Update animator parameters
         playerAnimator.SetFloat(horizontalMovementParameterName, movementAxesValues.x);
         playerAnimator.SetFloat(verticalMovementParameterName, movementAxesValues.y);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Interactable")
+        {
+            onInteractableWithinReach?.Invoke(collision.gameObject.GetComponent<Interactable>());
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Interactable")
+        {
+            onInteractableOutOfReach?.Invoke(collision.gameObject.GetComponent<Interactable>());
+        }
     }
 }
