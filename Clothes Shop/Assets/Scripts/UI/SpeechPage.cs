@@ -6,7 +6,7 @@ using ClothesShop.SO.Player.NPC;
 using ClothesShop.Shop.Portrait;
 using UnityEditor;
 
-[CreateAssetMenu(menuName = "Game/Speech/New Page")]
+[CreateAssetMenu(menuName = "Game/Speech/New Speech Page")]
 public class SpeechPage : ScriptableObject
 {
     public enum SpeechStyle
@@ -20,6 +20,7 @@ public class SpeechPage : ScriptableObject
     public string speakerName;
     public string speechText;
     public Sprite speakerSprite;
+    public bool isQuestion;
 
     void OnValidate()
     {

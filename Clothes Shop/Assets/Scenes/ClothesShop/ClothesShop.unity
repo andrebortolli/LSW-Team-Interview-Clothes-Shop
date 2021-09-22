@@ -6473,6 +6473,7 @@ GameObject:
   - component: {fileID: 1877129719}
   - component: {fileID: 1877129721}
   - component: {fileID: 1877129720}
+  - component: {fileID: 1877129722}
   m_Layer: 0
   m_Name: About
   m_TagString: Interactable
@@ -6510,15 +6511,15 @@ MonoBehaviour:
   onInteraction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: ccd243221f215284dad9d0f40b46a0e4, type: 2}
-        m_MethodName: OnInteraction
-        m_Mode: 0
+      - m_Target: {fileID: 1877129722}
+        m_MethodName: Open
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: http://www.zanbort.net.br/portfolio
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!61 &1877129721
@@ -6547,6 +6548,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1877129722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877129718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a76abb08d6477c1449ad024e46886e86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1881514833
 GameObject:
   m_ObjectHideFlags: 0
@@ -6682,6 +6695,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1881514833}
   m_CullTransparentMesh: 0
+--- !u!114 &1887728624 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 226156631159992328, guid: c93d92851814a6b4ca84bb23937ab74f,
+    type: 3}
+  m_PrefabInstance: {fileID: 226156630710490009}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93377c4176a4679468460815e51b5a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2047750375
 GameObject:
   m_ObjectHideFlags: 0
@@ -8867,6 +8892,16 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1068976663}
+    - target: {fileID: 226156630316311980, guid: c93d92851814a6b4ca84bb23937ab74f,
+        type: 3}
+      propertyPath: onTextAnimationFinished.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1887728624}
+    - target: {fileID: 226156630316311980, guid: c93d92851814a6b4ca84bb23937ab74f,
+        type: 3}
+      propertyPath: onTextAnimationFinished.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnTextAnimationFinished
+      objectReference: {fileID: 0}
     - target: {fileID: 226156631159992329, guid: c93d92851814a6b4ca84bb23937ab74f,
         type: 3}
       propertyPath: m_RootOrder

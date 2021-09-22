@@ -25,7 +25,10 @@ namespace ClothesShop.Managers
         [SerializeField] private GameObject speakerNamePanel;
         [SerializeField] private TextMeshProUGUI speakerName;
         [SerializeField] private AnimatedText speechText;
-        [SerializeField] private Image speakerPortrait; 
+        [SerializeField] private Image speakerPortrait;
+        [SerializeField] private YesNoPrompt yesNoPromptPanel;
+
+        private bool isQuestion;
 
         private void Awake()
         {
@@ -41,12 +44,13 @@ namespace ClothesShop.Managers
 
         private void Initialize(ref SpeechPage _speechPage)
         {
-            switch(_speechPage.speechStyle)
+            switch (_speechPage.speechStyle)
             {
                 case SpeechPage.SpeechStyle.Simple:
                     //speechText.AnimateText(_speechPage.speechText);
                     speakerName.text = null;
                     speakerPortrait.sprite = null;
+                    isQuestion = _speechPage.isQuestion;
 
                     //Set object active states
                     speakerNamePanel.SetActive(false);
@@ -57,6 +61,7 @@ namespace ClothesShop.Managers
                     //speechText.AnimateText(_speechPage.speechText);
                     speakerName.text = _speechPage.speakerName;
                     speakerPortrait.sprite = null;
+                    isQuestion = _speechPage.isQuestion;
 
                     //Set object active states
                     speakerNamePanel.SetActive(true);
@@ -64,10 +69,10 @@ namespace ClothesShop.Managers
                     speakerPortrait.gameObject.SetActive(false);
                     break;
                 case SpeechPage.SpeechStyle.Full:
-                    Debug.Log("Work");
                     //speechText.AnimateText(_speechPage.speechText);
                     speakerName.text = _speechPage.speakerName;
                     speakerPortrait.sprite = _speechPage.speakerSprite;
+                    isQuestion = _speechPage.isQuestion;
 
                     //Set object active states
                     speakerNamePanel.SetActive(true);
@@ -78,7 +83,7 @@ namespace ClothesShop.Managers
         }
 
         private IEnumerator ShowSpeechPage(SpeechPage _speechPage)
-        { 
+        {
             Initialize(ref _speechPage);
             speechPanel.SetActive(true);
             yield return speechText.StartCoroutine(speechText.AnimateText(_speechPage.speechText));
@@ -99,11 +104,29 @@ namespace ClothesShop.Managers
             speechPanel.SetActive(true);
             speechText.StartCoroutine(speechText.AnimateText(_stringToDisplay));
         }
-        
-        public void HidePanel()
+
+        private IEnumerator OnTextAnimationFinishedCoroutine()
+        {
+            CoroutineWithData cd = new CoroutineWithData(this, yesNoPromptPanel.WaitForSelection());
+            yield return cd.coroutine;
+            Debug.Log("result is " + (bool)cd.result);
+            speechPanel.SetActive(false);
+        }
+
+        public void OnTextAnimationFinished()
         {
             speechText.StopAllCoroutines();
             speechPanel.SetActive(false);
+            //if (isQuestion)
+            //{
+            //    yesNoPromptPanel.gameObject.SetActive(true);
+            //    StartCoroutine(OnTextAnimationFinishedCoroutine());
+            //}
+            //else
+            //{
+            //    yesNoPromptPanel.gameObject.SetActive(false);
+            //    speechPanel.SetActive(false);
+            //}
         }
 
         private void Update()

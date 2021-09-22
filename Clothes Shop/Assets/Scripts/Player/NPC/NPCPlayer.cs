@@ -5,7 +5,7 @@ using ClothesShop.Shop.Portrait;
 
 namespace ClothesShop.SO.Player.NPC
 {
-    [CreateAssetMenu(menuName = "Game/Shop/New NPC Portrait Data")]
+    [CreateAssetMenu(menuName = "Game/Players/New NPC")]
     public class NPCPlayer : Player
     {
         [Header("NPC Shop Portaits")]
