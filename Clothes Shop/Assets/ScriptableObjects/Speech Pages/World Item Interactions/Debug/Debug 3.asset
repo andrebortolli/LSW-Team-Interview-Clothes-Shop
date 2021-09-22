@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd890bbfeb81594299c2abdc33aa78d, type: 3}
   m_Name: Debug 3
   m_EditorClassIdentifier: 
-  speechStyle: 1
+  speechStyle: 2
   speakerName: Debug
   speechText: This is full style. All options should be displaying.
   speakerSprite: {fileID: 21300000, guid: 694a5de694b5c1742adfd824c5c1c13e, type: 3}
