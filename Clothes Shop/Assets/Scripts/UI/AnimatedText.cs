@@ -73,12 +73,12 @@ namespace ClothesShop.UI
 
         private void Update()
         {
-            //Speed up the animation if the player holds the interaction button.
-            if (Input.GetKeyDown(Settings.GameSettings.InteractionKey))
+            //Speed up the animation if the player holds the run button.
+            if (Input.GetKeyDown(Settings.GameSettings.RunKey))
             {
                 currentWriteSpeed = writeSpeed / fastForwardSpeed;
             }
-            if (Input.GetKeyUp(Settings.GameSettings.InteractionKey))
+            if (Input.GetKeyUp(Settings.GameSettings.RunKey))
             {
                 currentWriteSpeed = writeSpeed;
             }

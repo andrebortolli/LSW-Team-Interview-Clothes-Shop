@@ -4507,7 +4507,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4c841e04b9223946b9755b6f30202f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopkeeperNPCPlayerData: {fileID: 0}
+  shopkeeperNPCPlayerData: {fileID: 11400000, guid: 3765fa0d75d38654789f62a4d4aa60af,
+    type: 2}
   onItemBuy:
     m_PersistentCalls:
       m_Calls:
@@ -4599,12 +4600,12 @@ MonoBehaviour:
   onInteraction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 11400000, guid: 0f3f7e2c06f2e184bb58dea0c9d0193a, type: 2}
+        m_MethodName: OnInteraction
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
