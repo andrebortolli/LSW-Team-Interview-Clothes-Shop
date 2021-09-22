@@ -29,6 +29,7 @@ namespace ClothesShop.Players
         [Header("Animator Parameters")]
         public string horizontalMovementParameterName;
         public string verticalMovementParameterName;
+        public string speedParameterName;
 
         #endregion
 
@@ -181,6 +182,7 @@ namespace ClothesShop.Players
             //Update animator parameters
             playerAnimator.SetFloat(horizontalMovementParameterName, movementAxesValues.x);
             playerAnimator.SetFloat(verticalMovementParameterName, movementAxesValues.y);
+            playerAnimator.SetFloat(speedParameterName, movementAxesValues.sqrMagnitude);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

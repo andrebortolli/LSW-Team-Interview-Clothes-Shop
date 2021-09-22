@@ -608,7 +608,7 @@ Transform:
   m_GameObject: {fileID: 174596833}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 911537808}
   m_RootOrder: 0
@@ -652,7 +652,8 @@ SpriteRenderer:
   m_SortingLayerID: -814583209
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e54144826ab6e4847bb8f755b4ac55c4, type: 3}
+  m_Sprite: {fileID: -5808547504272235621, guid: 4d72f4783cc45484b835b487a21624f4,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -804,6 +805,38 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2092580078}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &271926248
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 271926249}
+  m_Layer: 0
+  m_Name: Luka's Shop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &271926249
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271926248}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.34806, y: 0.5619682, z: -5.8314104}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 792334682}
+  - {fileID: 1128921190}
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &294249566
 GameObject:
   m_ObjectHideFlags: 0
@@ -2015,7 +2048,7 @@ RectTransform:
   - {fileID: 720264161}
   - {fileID: 587052593}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3211,8 +3244,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 792334680}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.34806, y: -0.5619682, z: 5.8314104}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1859395300}
@@ -3222,8 +3255,8 @@ Transform:
   - {fileID: 725324784}
   - {fileID: 918783184}
   - {fileID: 938053746}
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 271926249}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &802003480
 GameObject:
@@ -3781,6 +3814,7 @@ MonoBehaviour:
   runningSpeed: {fileID: 11400000, guid: c88f11fb261bea7479e40e6de27f95be, type: 2}
   horizontalMovementParameterName: Horizontal
   verticalMovementParameterName: Vertical
+  speedParameterName: Speed
   onInteractableWithinReach:
     m_PersistentCalls:
       m_Calls:
@@ -3862,10 +3896,10 @@ BoxCollider2D:
   m_Offset: {x: 0.0035206974, y: -0.3868239}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 0.64, y: 0.64}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
@@ -3907,10 +3941,10 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 0.64, y: 0.64}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
@@ -5311,21 +5345,7 @@ CompositeCollider2D:
       - X: 95312496
         Y: 70000000
   m_CompositePaths:
-    m_Paths:
-    - - {x: 12, y: 6.65625}
-      - {x: 12, y: 9}
-      - {x: -8, y: 9}
-      - {x: -8, y: 7}
-      - {x: 9.53125, y: 7}
-      - {x: 9.53125, y: 6.9375}
-      - {x: 9.75, y: 6.75}
-      - {x: 9.9375, y: 6.75}
-      - {x: 10, y: 6.8125}
-      - {x: 9.968751, y: 7}
-      - {x: 10.03125, y: 7}
-      - {x: 10.0625, y: 6.9062495}
-      - {x: 10.875, y: 6.53125}
-      - {x: 11.718751, y: 6.53125}
+    m_Paths: []
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0
 --- !u!50 &1011910824
@@ -5732,7 +5752,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1068976665
 MonoBehaviour:
@@ -5916,7 +5936,7 @@ GameObject:
   - component: {fileID: 1128921193}
   - component: {fileID: 1128921192}
   m_Layer: 0
-  m_Name: Luka's Shop
+  m_Name: Luka
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5979,12 +5999,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1128921188}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.15, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.34806, y: 3.5880318, z: 5.8314104}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 271926249}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1128921191
 MonoBehaviour:
@@ -6912,7 +6932,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1355266144
 GameObject:
