@@ -1184,6 +1184,7 @@ GameObject:
   - component: {fileID: 708067270}
   - component: {fileID: 708067272}
   - component: {fileID: 708067271}
+  - component: {fileID: 708067273}
   m_Layer: 0
   m_Name: Gold Ore Box
   m_TagString: Interactable
@@ -1269,6 +1270,52 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &708067273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708067269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27c4cca632064046827045979a117a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onPlayerEnterInteractableArea:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1837033340}
+        m_MethodName: set_speed
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onPlayerExitInteractableArea:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1837033340}
+        m_MethodName: set_speed
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!95 &711908326 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5908032191699170796, guid: 13a62e70b8a0fae48b9f74618044c6c5,
+    type: 3}
+  m_PrefabInstance: {fileID: 162708017}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &720264160
 GameObject:
   m_ObjectHideFlags: 0
@@ -2027,7 +2074,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 884535804}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0.25, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 1.25, z: 0}
   m_LocalScale: {x: 0.5, y: 0.75, z: 0.5}
   m_Children: []
   m_Father: {fileID: 911537808}
@@ -2420,6 +2467,7 @@ GameObject:
   - component: {fileID: 946617155}
   - component: {fileID: 946617157}
   - component: {fileID: 946617156}
+  - component: {fileID: 946617158}
   m_Layer: 0
   m_Name: Furnace
   m_TagString: Interactable
@@ -2494,6 +2542,46 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &946617158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946617154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27c4cca632064046827045979a117a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onPlayerEnterInteractableArea:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1419284732}
+        m_MethodName: set_speed
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onPlayerExitInteractableArea:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1419284732}
+        m_MethodName: set_speed
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &997493545
 GameObject:
   m_ObjectHideFlags: 0
@@ -2505,6 +2593,7 @@ GameObject:
   - component: {fileID: 997493546}
   - component: {fileID: 997493548}
   - component: {fileID: 997493547}
+  - component: {fileID: 997493549}
   m_Layer: 0
   m_Name: Debug Interaction
   m_TagString: Interactable
@@ -2579,6 +2668,46 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &997493549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997493545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27c4cca632064046827045979a117a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onPlayerEnterInteractableArea:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1825087171}
+        m_MethodName: set_speed
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onPlayerExitInteractableArea:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1825087171}
+        m_MethodName: set_speed
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1011910819
 GameObject:
   m_ObjectHideFlags: 0
@@ -3800,6 +3929,7 @@ GameObject:
   - component: {fileID: 1312959883}
   - component: {fileID: 1312959885}
   - component: {fileID: 1312959884}
+  - component: {fileID: 1312959886}
   m_Layer: 0
   m_Name: Anvil
   m_TagString: Interactable
@@ -3874,6 +4004,46 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1312959886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312959882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27c4cca632064046827045979a117a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onPlayerEnterInteractableArea:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1530725690}
+        m_MethodName: set_speed
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onPlayerExitInteractableArea:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1530725690}
+        m_MethodName: set_speed
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1318186001
 GameObject:
   m_ObjectHideFlags: 0
@@ -4350,6 +4520,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1356143576}
   m_CullTransparentMesh: 0
+--- !u!95 &1419284732 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5908032191699170796, guid: 13a62e70b8a0fae48b9f74618044c6c5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2092580078}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1479639855
 GameObject:
   m_ObjectHideFlags: 0
@@ -4416,6 +4592,12 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
+--- !u!95 &1530725690 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5908032191699170796, guid: 13a62e70b8a0fae48b9f74618044c6c5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1205590567}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1636236313
 GameObject:
   m_ObjectHideFlags: 0
@@ -4496,6 +4678,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5908032191699170787, guid: 13a62e70b8a0fae48b9f74618044c6c5,
     type: 3}
   m_PrefabInstance: {fileID: 338322712}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1825087171 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5908032191699170796, guid: 13a62e70b8a0fae48b9f74618044c6c5,
+    type: 3}
+  m_PrefabInstance: {fileID: 338322712}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1837033340 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5908032191699170796, guid: 13a62e70b8a0fae48b9f74618044c6c5,
+    type: 3}
+  m_PrefabInstance: {fileID: 5908032191708535284}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1859395299
 GameObject:
@@ -6474,6 +6668,7 @@ GameObject:
   - component: {fileID: 1877129721}
   - component: {fileID: 1877129720}
   - component: {fileID: 1877129722}
+  - component: {fileID: 1877129723}
   m_Layer: 0
   m_Name: About
   m_TagString: Interactable
@@ -6560,6 +6755,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a76abb08d6477c1449ad024e46886e86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1877129723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877129718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27c4cca632064046827045979a117a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onPlayerEnterInteractableArea:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 711908326}
+        m_MethodName: set_speed
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onPlayerExitInteractableArea:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 711908326}
+        m_MethodName: set_speed
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1881514833
 GameObject:
   m_ObjectHideFlags: 0
