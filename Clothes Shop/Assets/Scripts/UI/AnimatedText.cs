@@ -20,6 +20,7 @@ namespace ClothesShop.UI
         bool pageLimitReached = false;
         bool isAnimating = false;
         bool isDialog = false;
+        bool endDialog = false;
         Coroutine currentAnimationCoroutine;
 
         #region Events
@@ -27,6 +28,8 @@ namespace ClothesShop.UI
         [Serializable] public class OnTextAnimationUpdate : UnityEvent { }
         [Serializable] public class OnTextAnimationPageFinished : UnityEvent { }
         [Serializable] public class OnTextAnimationNewPage : UnityEvent { }
+        [Serializable] public class OnWaitingForEndDialog : UnityEvent { }
+        [Serializable] public class OnEndDialog : UnityEvent { }
         [Serializable] public class OnTextAnimationFinished : UnityEvent { }
 
         [Header("Events")]
@@ -34,9 +37,10 @@ namespace ClothesShop.UI
         public OnTextAnimationUpdate onTextAnimationUpdate;
         public OnTextAnimationPageFinished onTextAnimationPageFinished;
         public OnTextAnimationNewPage onTextAnimationNewPage;
+        public OnWaitingForEndDialog onWaitingForEndDialog;
+        public OnEndDialog onEndDialog;
         public OnTextAnimationFinished onTextAnimationFinished;
 
-        public Func<bool> EndDialog { get; set; }
         #endregion
 
         private void OnEnable()
@@ -75,6 +79,16 @@ namespace ClothesShop.UI
         private bool Next()
         {
             return Input.GetKeyDown(Settings.GameSettings.InteractionKey);
+        }
+
+        public void EndDialogWait()
+        {
+            endDialog = true;
+        }
+
+        private bool EndDialog()
+        {
+            return endDialog;
         }
 
         private void Update()
@@ -144,6 +158,7 @@ namespace ClothesShop.UI
             //So the input can be used for something else
             onTextAnimationStarted?.Invoke();
             isDialog = _isDialog;
+            endDialog = false;
             string[] pages = SeparatePages(_textToAnimate);
             for (int i = 0; i < pages.Length; i++)
             { //For each page, animate the page contents
@@ -168,7 +183,9 @@ namespace ClothesShop.UI
             }
             if (_isDialog)
             {
+                onWaitingForEndDialog?.Invoke();
                 yield return new WaitUntil(EndDialog);
+                onEndDialog?.Invoke();
             }
             else
             {

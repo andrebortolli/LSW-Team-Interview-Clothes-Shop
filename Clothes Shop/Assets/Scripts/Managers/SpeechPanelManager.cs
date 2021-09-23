@@ -109,18 +109,7 @@ namespace ClothesShop.Managers
 
         public void OnTextAnimationFinished()
         {
-            //speechText.StopAllCoroutines();
             speechPanel.SetActive(false);
-            //if (isQuestion)
-            //{
-            //    yesNoPromptPanel.gameObject.SetActive(true);
-            //    StartCoroutine(OnTextAnimationFinishedCoroutine());
-            //}
-            //else
-            //{
-            //    yesNoPromptPanel.gameObject.SetActive(false);
-            //    speechPanel.SetActive(false);
-            //}
         }
 
         private void Update()
