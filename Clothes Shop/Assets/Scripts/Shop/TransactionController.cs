@@ -11,6 +11,7 @@ using ClothesShop.SO.Player;
 using ClothesShop.Players;
 using TMPro;
 using ClothesShop.Managers;
+using ClothesShop.UI.Menus;
 
 namespace ClothesShop.Shop.Transaction
 {
@@ -25,10 +26,7 @@ namespace ClothesShop.Shop.Transaction
             private set { }
         }
 
-        public Player originPlayerData;
-        public Player destinationPlayerData;
-
-        public GameObject transactionPanel;
+        public ShopController shopController;
 
         #region Events
 
@@ -59,18 +57,10 @@ namespace ClothesShop.Shop.Transaction
             onTransactionProcessed?.Invoke(_transactionToProcess);
         }
 
-        public Transaction.ItemTransaction CreateTransaction(Item _item)
-        {
-            return new ItemTransaction(originPlayerData, destinationPlayerData, _item);
-        }
-
         public IEnumerator ShopInteractionEnumerator(Player _player1, Player _player2, SpeechPage[] _pagesToDisplay)
         {
-            //If buy Origin -> player2 (NPC) | Destination -> player1 (PC)
-            //If sell Origin -> player1 (PC) | Destination -> player2 (NPC)
-            originPlayerData = _player2;
-            destinationPlayerData = _player1;
             yield return SpeechPanelManager.Instance.StartCoroutine(SpeechPanelManager.Instance.ShowSpeechPages(_pagesToDisplay));
+            shopController.Initialize(_player1, _player2);
             yield return null;
         }
 

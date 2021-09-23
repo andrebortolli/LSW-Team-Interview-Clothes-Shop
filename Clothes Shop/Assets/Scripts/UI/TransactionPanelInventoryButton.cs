@@ -11,7 +11,7 @@ namespace ClothesShop.UI.Menus.Prefabs
     {
         private Item myItem;
         private Button myButton;
-        private TransactionPanelController transactionPanelController;
+        private ShopController transactionPanelController;
 
         [Header("Prefab Fields")]
         public Image itemIcon;
@@ -34,7 +34,7 @@ namespace ClothesShop.UI.Menus.Prefabs
             myButton.onClick.RemoveListener(OnClick);
         }
 
-        public void Initialize(TransactionPanelController _tpcRef, Item _item)
+        public void Initialize(ShopController _tpcRef, Item _item)
         {
             transactionPanelController = _tpcRef;
             myItem = _item;
