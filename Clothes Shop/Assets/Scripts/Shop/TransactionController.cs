@@ -25,7 +25,6 @@ namespace ClothesShop.Shop.Transaction
             private set { }
         }
 
-
         public Player originPlayerData;
         public Player destinationPlayerData;
 
@@ -67,14 +66,11 @@ namespace ClothesShop.Shop.Transaction
 
         public IEnumerator ShopInteractionEnumerator(Player _player1, Player _player2, SpeechPage[] _pagesToDisplay)
         {
-
             //If buy Origin -> player2 (NPC) | Destination -> player1 (PC)
             //If sell Origin -> player1 (PC) | Destination -> player2 (NPC)
             originPlayerData = _player2;
             destinationPlayerData = _player1;
             yield return SpeechPanelManager.Instance.StartCoroutine(SpeechPanelManager.Instance.ShowSpeechPages(_pagesToDisplay));
-            //Use CoroutineWithData to get interaction type. As of now, hardwired to buy
-            transactionPanel.SetActive(true);
             yield return null;
         }
 

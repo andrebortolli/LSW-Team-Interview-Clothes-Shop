@@ -174,7 +174,7 @@ namespace ClothesShop.UI
                     yield return new WaitForSeconds(currentWriteSpeed);
 
                     if (j + 1 >= pages[i].Length)
-                    { //Last loop
+                    { //End of page has reached
                         isAnimating = false;
                         onTextAnimationPageFinished?.Invoke();
 
