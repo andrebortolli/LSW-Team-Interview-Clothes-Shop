@@ -173,10 +173,12 @@ namespace ClothesShop.Players
             if (Input.GetKey(GameSettings.RunKey))
             {
                 playerRigidbody.MovePosition(playerRigidbody.position + timeFixedMovementValues * runningSpeed.Value);
+                playerAnimator.speed = 1.0f;
             }
             else
             {
                 playerRigidbody.MovePosition(playerRigidbody.position + timeFixedMovementValues * walkingSpeed.Value);
+                playerAnimator.speed = 0.75f;
             }
 
             //Update animator parameters
