@@ -16,8 +16,6 @@ namespace ClothesShop.UI.Menus
         public Item currentSelectedItem;
         public int currentSelectedIndex;
 
-        [Serializable]
-        public class OnCurrentSelectedItemChanged : UnityEvent<Item, int> { }
 
         public enum ShopChoice
         {
@@ -27,7 +25,7 @@ namespace ClothesShop.UI.Menus
             Nevermind
         }
 
-        public ShopChoice shopChoice;
+        public ShopChoice shopChoice { get; private set; }
 
         [Header("Players")]
         public Player pcPlayer;
@@ -39,8 +37,14 @@ namespace ClothesShop.UI.Menus
         public Transform contentsTransform;
         public GameObject itemMenuPrefab;
 
+        [Serializable]
+        public class OnCurrentSelectedItemChanged : UnityEvent<Item, int> { }
+        [Serializable]
+        public class OnShopChoiceSelectionChanged : UnityEvent<ShopChoice> { }
+
         [Header("Events")]
         public OnCurrentSelectedItemChanged onCurrentSelectedItemChanged;
+        public OnShopChoiceSelectionChanged onShopChoiceSelectionChanged;
 
         private void OnEnable()
         {

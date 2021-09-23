@@ -1,7 +1,9 @@
 ﻿using ClothesShop.Shop.Transaction;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace ClothesShop.Managers
 {
@@ -20,16 +22,28 @@ namespace ClothesShop.Managers
         public TransactionController TransactionController { get => TransactionController.Instance; }
         private bool gamePaused = false;
         public bool GamePaused { get => gamePaused; }
-       
+
+
+
+        [Serializable]
+        public class OnGamePause : UnityEvent { }
+        [Serializable]
+        public class OnGameUnpause : UnityEvent { };
+
+        [Header("Events")]
+        public OnGamePause onGamePause;
+        public OnGameUnpause onGameUnpause;
 
         public void Pause()
         {
             gamePaused = true;
+            onGamePause?.Invoke();
         }
 
         public void Unpause()
         {
             gamePaused = false;
+            onGameUnpause?.Invoke();
         }
 
         private void Awake()
