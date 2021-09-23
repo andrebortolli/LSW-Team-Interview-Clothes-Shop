@@ -18,6 +18,7 @@ namespace ClothesShop.Shop.Transaction
             Origin = _origin;
             Destination = _destination;
             Item = _item;
+            itemIndex = _itemIndex;
         }
 
         public bool Process()

@@ -17,7 +17,7 @@ namespace ClothesShop.UI.Menus
         public int currentSelectedIndex;
 
         [Serializable]
-        public class OnCurrentSelectedItemChanged : UnityEvent<Item> { }
+        public class OnCurrentSelectedItemChanged : UnityEvent<Item, int> { }
 
         public enum ShopChoice
         {
@@ -26,7 +26,6 @@ namespace ClothesShop.UI.Menus
             Sell,
             Nevermind
         }
-
 
         public ShopChoice shopChoice;
 
@@ -42,6 +41,23 @@ namespace ClothesShop.UI.Menus
 
         [Header("Events")]
         public OnCurrentSelectedItemChanged onCurrentSelectedItemChanged;
+
+        private void OnEnable()
+        {
+            onCurrentSelectedItemChanged.AddListener(OnCurrentSelectedItemChangedTriggered);
+        }
+
+        private void OnDisable()
+        {
+            onCurrentSelectedItemChanged.RemoveListener(OnCurrentSelectedItemChangedTriggered);
+        }
+        
+        void OnCurrentSelectedItemChangedTriggered(Item _selectedItem, int _selectedIndex)
+        {
+            currentSelectedIndex = _selectedIndex;
+            currentSelectedItem = _selectedItem;
+            Debug.Log("Selected Item: " + _selectedItem + " | " + "Selected Index: " + _selectedIndex);
+        }
 
         public void SetShopChoiceToBuy()
         {
@@ -103,7 +119,8 @@ namespace ClothesShop.UI.Menus
         public void ClearContents()
         {
             currentSelectedItem = null;
-            onCurrentSelectedItemChanged?.Invoke(currentSelectedItem);
+            currentSelectedIndex = -1;
+            onCurrentSelectedItemChanged?.Invoke(currentSelectedItem, currentSelectedIndex);
             foreach (Transform child in contentsTransform.transform)
             {
                 GameObject.Destroy(child.gameObject);

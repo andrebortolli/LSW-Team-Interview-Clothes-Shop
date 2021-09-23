@@ -13,7 +13,7 @@ public class TransactionPanelItemPreviewImageListener : TransactionOnSelectedIte
         myImage = GetComponent<Image>();
     }
 
-    public override void OnSelectedItemChanged(Item _item)
+    public override void OnSelectedItemChanged(Item _item, int _itemIndex)
     {
         if (_item != null)
         {

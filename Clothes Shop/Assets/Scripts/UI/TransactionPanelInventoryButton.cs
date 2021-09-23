@@ -48,12 +48,7 @@ namespace ClothesShop.UI.Menus.Prefabs
 
         private void OnClick()
         {
-            if (transactionPanelController.currentSelectedItem != myItem)
-            {
-                transactionPanelController.currentSelectedItem = myItem;
-                transactionPanelController.currentSelectedIndex = myInventoryItemIndex;
-                transactionPanelController.onCurrentSelectedItemChanged?.Invoke(myItem);
-            }
+            transactionPanelController.onCurrentSelectedItemChanged?.Invoke(myItem, myInventoryItemIndex);
         }
     }
 }

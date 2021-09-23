@@ -28,12 +28,15 @@ namespace ClothesShop.SO.Player.NPC
 
         public override void SellItem(Item.Item _itemToSell, int _removeIndex)
         {
+            Debug.Log("Item at " + _removeIndex + " is: " + inventory.Items[_removeIndex].itemName + " | Selected item: " + _itemToSell.itemName);
             if (inventory.Items[_removeIndex] == _itemToSell)
             {
+                Debug.Log("Removed Exact Item");
                 inventory.RemoveItemAt(_removeIndex);
             }
             else
             {
+                Debug.Log("Removed First Item");
                 inventory.RemoveItem(_itemToSell);
             }
             wallet.SetValue(wallet.Value + _itemToSell.value);
