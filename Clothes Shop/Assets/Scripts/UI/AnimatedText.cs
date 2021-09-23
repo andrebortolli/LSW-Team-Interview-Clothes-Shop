@@ -177,20 +177,34 @@ namespace ClothesShop.UI
                     { //Last loop
                         isAnimating = false;
                         onTextAnimationPageFinished?.Invoke();
-                        yield return new WaitUntil(Next);
+
+                        //Trigger dialog events
+                        if (_isDialog)
+                        {
+                            onWaitingForEndDialog?.Invoke();
+                            yield return new WaitUntil(EndDialog);
+                            onEndDialog?.Invoke();
+                        }
+                        else
+                        {
+                            yield return new WaitUntil(Next);
+                        }
                     }
                 }
             }
-            if (_isDialog)
-            {
-                onWaitingForEndDialog?.Invoke();
-                yield return new WaitUntil(EndDialog);
-                onEndDialog?.Invoke();
-            }
-            else
-            {
-                yield return new WaitUntil(Next);
-            }
+            //if (_isDialog)
+            //{
+            //    onWaitingForEndDialog?.Invoke();
+            //    yield return new WaitUntil(EndDialog);
+            //    onEndDialog?.Invoke();
+            //}
+            //else
+            //{
+            //    yield return new WaitUntil(Next);
+            //}
+            //yield return new WaitUntil(Next);
+
+            //yield return new WaitUntil(Next);
             onTextAnimationFinished?.Invoke();
         }
     }

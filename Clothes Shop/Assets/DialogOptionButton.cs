@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using ClothesShop.Managers;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -33,5 +34,6 @@ public class DialogOptionButton : MonoBehaviour
     public void OnClick()
     {
         mySpeechPageDialogOption.onClickEvent.Raise();
+        SpeechPanelManager.Instance.onDialogSelectionMade?.Invoke(mySpeechPageDialogOption);
     }
 }

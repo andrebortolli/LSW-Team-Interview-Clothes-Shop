@@ -3,19 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
+using System;
+using ClothesShop.Managers;
 
 namespace ClothesShop.UI
 {
     public class DialogController : MonoBehaviour
     {
+        [Header("Setup")]
+        public Transform dialogOptionsContent;
+
         [Header("Prefabs")]
         public GameObject dialogOptionButtonPrefab;
 
-        private bool selected = false;
+        bool selected = false;
+
+
+        private void OnEnable()
+        {
+            SpeechPanelManager.Instance.onDialogSelectionMade.AddListener(OnDialogSelectionMethod);
+        }
+
+        private void OnDisable()
+        {
+            SpeechPanelManager.Instance.onDialogSelectionMade.RemoveListener(OnDialogSelectionMethod);
+        }
+
+        private void OnDialogSelectionMethod(SpeechPageDialogOption speechPageDialogOption)
+        {
+            selected = true;
+            Debug.Log("Selected = " + selected.ToString());  
+        }
 
         private void ClearOptions()
         {
-            foreach (Transform child in this.transform)
+            foreach (Transform child in dialogOptionsContent.transform)
             {
                 GameObject.Destroy(child.gameObject);
             }
@@ -26,30 +49,15 @@ namespace ClothesShop.UI
             ClearOptions();
             foreach (SpeechPageDialogOption option in _dialogOptions)
             {
-                GameObject optionButton = Instantiate(dialogOptionButtonPrefab, this.transform);
+                GameObject optionButton = Instantiate(dialogOptionButtonPrefab, dialogOptionsContent.transform);
                 DialogOptionButton dialogOptionButton = optionButton.GetComponent<DialogOptionButton>();
                 dialogOptionButton.Initialize(option);
             }
         }
 
-        private bool Selected()
+        public void ShowDialog()
         {
-            return selected;
-        }
-
-        public void Select()
-        {
-            selected = true;
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public IEnumerator WaitForSelection()
-        {
-            yield return new WaitUntil(Selected);
-            selected = false;
-            yield return null;
+            dialogOptionsContent.gameObject.SetActive(true);
         }
     }
 }

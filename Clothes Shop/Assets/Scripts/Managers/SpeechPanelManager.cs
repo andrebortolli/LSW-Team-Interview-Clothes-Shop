@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using ClothesShop.UI;
 
 using TMPro;
+using UnityEngine.Events;
+using System;
 
 namespace ClothesShop.Managers
 {
@@ -28,6 +30,24 @@ namespace ClothesShop.Managers
         [SerializeField] private Image speakerPortrait;
         [SerializeField] private DialogController dialogController;
 
+        [Serializable] public class OnDialogSelectionMade : UnityEvent<SpeechPageDialogOption> { }
+
+        [Header("Events")]
+        public OnDialogSelectionMade onDialogSelectionMade;
+
+
+        private void OnEnable()
+        {
+            onDialogSelectionMade.AddListener(OnDialogSelectionMethod);
+            speechText.onWaitingForEndDialog.AddListener(OnWaitingForDialogEnd);
+        }
+
+        private void OnDisable()
+        {
+            onDialogSelectionMade.RemoveListener(OnDialogSelectionMethod);
+            speechText.onWaitingForEndDialog.RemoveListener(OnWaitingForDialogEnd);
+        }
+
         private SpeechPage currentSpeechPage;
 
         private void Awake()
@@ -40,6 +60,17 @@ namespace ClothesShop.Managers
             {
                 Destroy(gameObject);
             }
+        }
+
+        private void OnDialogSelectionMethod(SpeechPageDialogOption speechPageDialogOption)
+        {
+            Debug.Log(speechPageDialogOption.optionName + " was selected!");
+            speechText.EndDialogWait();
+        }
+
+        private void OnWaitingForDialogEnd()
+        {
+            dialogController.ShowDialog();
         }
 
         private void Initialize(ref SpeechPage _speechPage)
@@ -90,9 +121,7 @@ namespace ClothesShop.Managers
         {
             Initialize(ref _speechPage);
             speechPanel.SetActive(true);
-            //speechText.StopAllCoroutines(); //Not necessary anymore
             yield return speechText.AnimateText(_speechPage.speechText, _speechPage.isDialog);
-            //yield return speechText.StartCoroutine(speechText.AnimateTextCoroutine(_speechPage.speechText));
         }
 
         public IEnumerator ShowSpeechPages(SpeechPage[] _speechPages)
@@ -105,13 +134,13 @@ namespace ClothesShop.Managers
             darkerBackground.SetTrigger("Lighten Background");
         }
 
-        private IEnumerator OnTextAnimationFinishedCoroutine()
-        {
-            CoroutineWithData cd = new CoroutineWithData(this, dialogController.WaitForSelection());
-            yield return cd.coroutine;
-            Debug.Log("result is " + (bool)cd.result);
-            speechPanel.SetActive(false);
-        }
+        //private IEnumerator OnTextAnimationFinishedCoroutine()
+        //{
+        //    //CoroutineWithData cd = new CoroutineWithData(this, dialogController.WaitForSelection());
+        //    //yield return cd.coroutine;
+        //    //Debug.Log("result is " + (bool)cd.result);
+        //    //speechPanel.SetActive(false);
+        //}
 
         public void OnTextAnimationFinished()
         {
