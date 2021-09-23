@@ -110,11 +110,6 @@ namespace ClothesShop.Managers
                     break;
             }
             dialogController.InstantiateOptions(_speechPage.dialogOptions);
-            //foreach(SpeechPageDialogOption speechPageDialogOption in _speechPage.dialogOptions)
-            //{
-            //    Debug.Log(speechPageDialogOption.optionName);
-
-            //}
         }
 
         private IEnumerator ShowSpeechPage(SpeechPage _speechPage)
