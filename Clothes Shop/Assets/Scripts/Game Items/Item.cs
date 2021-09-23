@@ -19,5 +19,6 @@ namespace ClothesShop.SO.Item
         public int value; //Item buying value
         public int resellValue; //Item selling value
         public Sprite uiSprite; //Sprite shown in the UI
+        public Sprite previewSprite; //Sprite shown in the buying screen
     }
 }

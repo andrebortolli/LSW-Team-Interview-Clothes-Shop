@@ -86,7 +86,8 @@ namespace ClothesShop.Managers
         {
             Initialize(ref _speechPage);
             speechPanel.SetActive(true);
-            yield return speechText.StartCoroutine(speechText.AnimateText(_speechPage.speechText));
+            speechText.StopAllCoroutines();
+            yield return speechText.StartCoroutine(speechText.AnimateTextCoroutine(_speechPage.speechText));
         }
 
         public IEnumerator ShowSpeechPages(SpeechPage[] _speechPages)
@@ -102,7 +103,7 @@ namespace ClothesShop.Managers
         public void ShowPanel(string _stringToDisplay)
         {
             speechPanel.SetActive(true);
-            speechText.StartCoroutine(speechText.AnimateText(_stringToDisplay));
+            speechText.AnimateText(_stringToDisplay);
         }
 
         private IEnumerator OnTextAnimationFinishedCoroutine()

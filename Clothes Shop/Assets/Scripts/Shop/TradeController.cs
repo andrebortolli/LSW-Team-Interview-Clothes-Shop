@@ -29,6 +29,8 @@ namespace ClothesShop.Trade
         [Header("Trade Settings")]
         public Item playerSelectedItem;
 
+
+
         private void Awake()
         {
             if (sInstance == null)
@@ -48,6 +50,11 @@ namespace ClothesShop.Trade
             npcInventoryTMP.text = string.Format("{0}'s Inventory", _player2.playerName.Value);
             tradeMenu.SetActive(true);
             yield return null;
+        }
+
+        public void Trade()
+        {
+
         }
 
         public void ExitTrade()

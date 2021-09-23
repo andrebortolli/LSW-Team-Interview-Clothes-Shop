@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using ClothesShop.Shop.Transaction;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,10 +17,10 @@ namespace ClothesShop.Managers
         }
 
         public SpeechPanelManager SpeechPanelManager { get => Managers.SpeechPanelManager.Instance; }
-        public Trade.TradeController TradeController { get => Trade.TradeController.Instance; }
-
+        public TransactionController TransactionController { get => TransactionController.Instance; }
         private bool gamePaused = false;
         public bool GamePaused { get => gamePaused; }
+       
 
         public void Pause()
         {

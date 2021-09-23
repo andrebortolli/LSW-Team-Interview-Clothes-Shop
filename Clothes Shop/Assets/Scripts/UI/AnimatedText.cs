@@ -89,7 +89,13 @@ namespace ClothesShop.UI
             }
         }
 
-        public IEnumerator AnimateText(string _textToAnimate)
+        public void AnimateText(string _textToAnimate)
+        {
+            StopAllCoroutines();
+            StartCoroutine(AnimateTextCoroutine(_textToAnimate));
+        }
+
+        public IEnumerator AnimateTextCoroutine(string _textToAnimate)
         {
             onTextAnimationStarted?.Invoke();
             string[] pages = SeparatePages(_textToAnimate);

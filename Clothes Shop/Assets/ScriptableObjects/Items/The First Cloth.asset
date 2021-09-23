@@ -19,3 +19,5 @@ MonoBehaviour:
   resellValue: 200
   uiSprite: {fileID: -2725728968253761336, guid: 26a1f75069f5a704798634759c62122b,
     type: 3}
+  previewSprite: {fileID: -2725728968253761336, guid: 26a1f75069f5a704798634759c62122b,
+    type: 3}
