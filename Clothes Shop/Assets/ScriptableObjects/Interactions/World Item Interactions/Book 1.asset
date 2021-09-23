@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99cf51d9c58981e4da482d8a2b40aa64, type: 3}
-  m_Name: Shopkeeper Luka Wallet
+  m_Script: {fileID: 11500000, guid: 4636982bef2d9d446acfb9274c29be9a, type: 3}
+  m_Name: Book 1
   m_EditorClassIdentifier: 
-  DeveloperDescription: 
-  Value: 3000
+  pagesToDisplay:
+  - {fileID: 11400000, guid: 90f9e9f50470f4a4885f4f1f493a60ca, type: 2}
+  - {fileID: 11400000, guid: 8082ae3b40973544ca44b33f2e47bb89, type: 2}

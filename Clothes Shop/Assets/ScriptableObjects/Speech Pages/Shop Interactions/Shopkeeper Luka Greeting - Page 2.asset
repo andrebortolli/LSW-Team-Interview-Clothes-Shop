@@ -18,7 +18,9 @@ MonoBehaviour:
   speakerSprite: {fileID: 21300000, guid: 694a5de694b5c1742adfd824c5c1c13e, type: 3}
   isDialog: 1
   dialogOptions:
+  - optionName: Nevermind
+    onClickEvent: {fileID: 11400000, guid: 1f3804971cd1ddd4c8a8fff547b227b1, type: 2}
   - optionName: Sell
-    onClickEvent: {fileID: 11400000, guid: 2b7d4be0d81593f49b7c10b30c0bcfa0, type: 2}
+    onClickEvent: {fileID: 11400000, guid: 7c5259e8cbfad9e49b86a9eb35fcde5f, type: 2}
   - optionName: Buy
     onClickEvent: {fileID: 11400000, guid: b581a4faa8bffee429fdf32d84387a70, type: 2}

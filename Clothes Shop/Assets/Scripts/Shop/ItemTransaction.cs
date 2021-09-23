@@ -11,8 +11,9 @@ namespace ClothesShop.Shop.Transaction
         private Player origin;
         private Player destination;
         private Item item;
+        private int itemIndex;
 
-        public ItemTransaction (Player _origin, Player _destination, Item _item)
+        public ItemTransaction (Player _origin, Player _destination, Item _item, int _itemIndex)
         {
             Origin = _origin;
             Destination = _destination;
@@ -26,7 +27,7 @@ namespace ClothesShop.Shop.Transaction
 
             if (buyerHasEnoughFunds)
             {
-                Origin.SellItem(Item);
+                Origin.SellItem(Item, itemIndex);
                 Destination.BuyItem(Item);
             }
 

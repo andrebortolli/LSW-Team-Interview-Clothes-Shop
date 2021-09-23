@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd890bbfeb81594299c2abdc33aa78d, type: 3}
+  m_Name: Book - Page 2
+  m_EditorClassIdentifier: 
+  speechStyle: 1
+  speakerName: "Andr\xE9"
+  speechText: What would you like to do?
+  speakerSprite: {fileID: 0}
+  isDialog: 1
+  dialogOptions:
+  - optionName: Close
+    onClickEvent: {fileID: 11400000, guid: 09e703b193da9be4d8dc43096be4b0e5, type: 2}
+  - optionName: Portfolio
+    onClickEvent: {fileID: 11400000, guid: 2b7d4be0d81593f49b7c10b30c0bcfa0, type: 2}

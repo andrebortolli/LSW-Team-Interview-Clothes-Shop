@@ -25,5 +25,18 @@ namespace ClothesShop.SO.Player.NPC
             wallet.SetValue(wallet.Value + _itemToSell.value);
             //Debug.Log(_itemToSell.value);
         }
+
+        public override void SellItem(Item.Item _itemToSell, int _removeIndex)
+        {
+            if (inventory.Items[_removeIndex] == _itemToSell)
+            {
+                inventory.RemoveItemAt(_removeIndex);
+            }
+            else
+            {
+                inventory.RemoveItem(_itemToSell);
+            }
+            wallet.SetValue(wallet.Value + _itemToSell.value);
+        }
     }
 }

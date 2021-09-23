@@ -11,6 +11,7 @@ namespace ClothesShop.UI.Menus.Prefabs
     {
         private Item myItem;
         private Button myButton;
+        private int myInventoryItemIndex;
         private ShopController transactionPanelController;
 
         [Header("Prefab Fields")]
@@ -34,10 +35,11 @@ namespace ClothesShop.UI.Menus.Prefabs
             myButton.onClick.RemoveListener(OnClick);
         }
 
-        public void Initialize(ShopController _tpcRef, Item _item)
+        public void Initialize(ShopController _tpcRef, Item _item, int _inventoryItemIndex)
         {
             transactionPanelController = _tpcRef;
             myItem = _item;
+            myInventoryItemIndex = _inventoryItemIndex;
             itemIcon.sprite = myItem.uiSprite;
             itemName.text = myItem.name;
             itemValue.text = myItem.value.ToString();
@@ -49,6 +51,7 @@ namespace ClothesShop.UI.Menus.Prefabs
             if (transactionPanelController.currentSelectedItem != myItem)
             {
                 transactionPanelController.currentSelectedItem = myItem;
+                transactionPanelController.currentSelectedIndex = myInventoryItemIndex;
                 transactionPanelController.onCurrentSelectedItemChanged?.Invoke(myItem);
             }
         }

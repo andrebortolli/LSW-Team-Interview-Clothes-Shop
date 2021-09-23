@@ -14,6 +14,7 @@ namespace ClothesShop.UI.Menus
     {
 
         public Item currentSelectedItem;
+        public int currentSelectedIndex;
 
         [Serializable]
         public class OnCurrentSelectedItemChanged : UnityEvent<Item> { }
@@ -22,7 +23,8 @@ namespace ClothesShop.UI.Menus
         {
             Uninitialized,
             Buy,
-            Sell
+            Sell,
+            Nevermind
         }
 
 
@@ -51,31 +53,40 @@ namespace ClothesShop.UI.Menus
             shopChoice = ShopChoice.Sell;
         }
 
+        public void SetShopChoiceToNevermind()
+        {
+            pcPlayer = null;
+            npcPlayer = null;
+            shopChoice = ShopChoice.Nevermind;
+        }
+
+        public void SetShopChoiceToUninitialized()
+        {
+            pcPlayer = null;
+            npcPlayer = null;
+            shopChoice = ShopChoice.Uninitialized;
+        }
+
         public void Initialize(Player _pcPlayer, Player _npcPlayer)
         {
+            if (shopChoice == ShopChoice.Nevermind || shopChoice == ShopChoice.Uninitialized)
+            {
+                return;
+            }
             pcPlayer = _pcPlayer;
             npcPlayer = _npcPlayer;
-            Debug.Log("Shop: ShopChoice = " + shopChoice.ToString());
-            switch(shopChoice)
-            {
-                case ShopChoice.Buy:
-                    break;
-
-                case ShopChoice.Sell:
-                    break;
-            }
             UpdateContents();
             shopPanel.SetActive(true);
         }
 
-        public Shop.Transaction.ItemTransaction CreateOrder(ShopChoice _shopChoice, Item _item)
+        public Shop.Transaction.ItemTransaction CreateOrder(ShopChoice _shopChoice, Item _item, int _itemIndex)
         {
             switch (shopChoice)
             {
                 case ShopChoice.Buy:
-                    return new ItemTransaction(npcPlayer, pcPlayer, _item);
+                    return new ItemTransaction(npcPlayer, pcPlayer, _item, _itemIndex);
                 case ShopChoice.Sell:
-                    return new ItemTransaction(pcPlayer, npcPlayer, _item);
+                    return new ItemTransaction(pcPlayer, npcPlayer, _item, _itemIndex);
                 default:
                     return null;
             }
@@ -85,7 +96,7 @@ namespace ClothesShop.UI.Menus
         {
             if (currentSelectedItem != null)
             {
-                TransactionController.Instance.ProcessTransaction(CreateOrder(shopChoice, currentSelectedItem));
+                TransactionController.Instance.ProcessTransaction(CreateOrder(shopChoice, currentSelectedItem, currentSelectedIndex));
             }
         }
 
@@ -101,11 +112,11 @@ namespace ClothesShop.UI.Menus
 
         private void ListItems(Player _player)
         {
-            foreach (Item item in _player.inventory.Items)
+            for (int i = 0; i < _player.inventory.Items.Count; i++)
             {
                 GameObject itemMenuPrefabInstance = Instantiate(itemMenuPrefab, contentsTransform);
-                itemMenuPrefabInstance.name = item.itemName;
-                itemMenuPrefabInstance.GetComponent<Prefabs.TransactionPanelInventoryButton>().Initialize(this, item);
+                itemMenuPrefabInstance.name = _player.inventory.Items[i].itemName;
+                itemMenuPrefabInstance.GetComponent<Prefabs.TransactionPanelInventoryButton>().Initialize(this, _player.inventory.Items[i], i);
             }
             inventoryValue.text = string.Format("Value: {0:D4} / {1:D4}", _player.inventory.GetMonetaryValue(false), _player.inventory.GetMonetaryValue(true));
         }

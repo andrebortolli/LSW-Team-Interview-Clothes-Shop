@@ -9,8 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99cf51d9c58981e4da482d8a2b40aa64, type: 3}
-  m_Name: Shopkeeper Luka Wallet
+  m_Script: {fileID: 11500000, guid: 2cd890bbfeb81594299c2abdc33aa78d, type: 3}
+  m_Name: Book - Page 1
   m_EditorClassIdentifier: 
-  DeveloperDescription: 
-  Value: 3000
+  speechStyle: 1
+  speakerName: "Andr\xE9"
+  speechText: Thank you for testing my game! Hope you had a pleasant time!
+  speakerSprite: {fileID: 0}
+  isDialog: 0
+  dialogOptions: []
