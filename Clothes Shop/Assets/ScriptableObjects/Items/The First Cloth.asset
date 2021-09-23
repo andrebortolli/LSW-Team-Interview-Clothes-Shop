@@ -15,8 +15,8 @@ MonoBehaviour:
   id: 1
   itemName: The First Cloth
   description: This is the first cloth ever to be created in this project :)
-  value: 100
-  resellValue: 200
+  value: 200
+  resellValue: 100
   uiSprite: {fileID: -2725728968253761336, guid: 26a1f75069f5a704798634759c62122b,
     type: 3}
   previewSprite: {fileID: -2725728968253761336, guid: 26a1f75069f5a704798634759c62122b,

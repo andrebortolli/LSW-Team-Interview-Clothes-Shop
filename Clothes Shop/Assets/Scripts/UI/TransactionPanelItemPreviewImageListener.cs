@@ -15,6 +15,9 @@ public class TransactionPanelItemPreviewImageListener : TransactionOnSelectedIte
 
     public override void OnSelectedItemChanged(Item _item)
     {
-        myImage.sprite = _item.previewSprite;
+        if (_item != null)
+        {
+            myImage.sprite = _item.previewSprite;
+        }
     }
 }

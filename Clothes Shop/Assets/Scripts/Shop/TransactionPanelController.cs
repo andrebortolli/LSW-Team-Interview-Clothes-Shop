@@ -45,6 +45,7 @@ namespace ClothesShop.UI.Menus
         public void ClearContents()
         {
             currentSelectedItem = null;
+            onCurrentSelectedItemChanged?.Invoke(currentSelectedItem);
             foreach (Transform child in contentsTransform.transform)
             {
                 GameObject.Destroy(child.gameObject);

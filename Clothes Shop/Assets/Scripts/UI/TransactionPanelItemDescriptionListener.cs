@@ -15,6 +15,9 @@ public class TransactionPanelItemDescriptionListener : TransactionOnSelectedItem
 
     public override void OnSelectedItemChanged(Item _item)
     {
-        myAnimatedText.AnimateText(_item.description);
+        if (_item != null)
+        {
+            myAnimatedText.AnimateText(_item.description);
+        }
     }
 }

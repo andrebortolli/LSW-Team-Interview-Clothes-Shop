@@ -16,14 +16,14 @@ namespace ClothesShop.SO.Player.NPC
         {
             inventory.AddItem(_itemToBuy);
             wallet.SetValue(wallet.Value - _itemToBuy.resellValue);
-            Debug.Log(_itemToBuy.resellValue);
+            //Debug.Log(_itemToBuy.resellValue);
         }
 
         public override void SellItem(Item.Item _itemToSell)
         {
             inventory.RemoveItem(_itemToSell);
             wallet.SetValue(wallet.Value + _itemToSell.value);
-            Debug.Log(_itemToSell.value);
+            //Debug.Log(_itemToSell.value);
         }
     }
 }
