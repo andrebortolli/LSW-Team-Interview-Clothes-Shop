@@ -20,7 +20,7 @@ public class SpeechPage : ScriptableObject
     public string speakerName;
     public string speechText;
     public Sprite speakerSprite;
-    public bool isQuestion;
+    public bool isDialog;
 
     void OnValidate()
     {

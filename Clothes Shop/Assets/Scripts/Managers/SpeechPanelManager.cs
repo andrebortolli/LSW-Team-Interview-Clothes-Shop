@@ -28,7 +28,7 @@ namespace ClothesShop.Managers
         [SerializeField] private Image speakerPortrait;
         [SerializeField] private YesNoPrompt yesNoPromptPanel;
 
-        private bool isQuestion;
+        private SpeechPage currentSpeechPage;
 
         private void Awake()
         {
@@ -44,13 +44,13 @@ namespace ClothesShop.Managers
 
         private void Initialize(ref SpeechPage _speechPage)
         {
+            currentSpeechPage = _speechPage;
             switch (_speechPage.speechStyle)
             {
                 case SpeechPage.SpeechStyle.Simple:
                     //speechText.AnimateText(_speechPage.speechText);
                     speakerName.text = null;
                     speakerPortrait.sprite = null;
-                    isQuestion = _speechPage.isQuestion;
 
                     //Set object active states
                     speakerNamePanel.SetActive(false);
@@ -61,7 +61,6 @@ namespace ClothesShop.Managers
                     //speechText.AnimateText(_speechPage.speechText);
                     speakerName.text = _speechPage.speakerName;
                     speakerPortrait.sprite = null;
-                    isQuestion = _speechPage.isQuestion;
 
                     //Set object active states
                     speakerNamePanel.SetActive(true);
@@ -72,7 +71,6 @@ namespace ClothesShop.Managers
                     //speechText.AnimateText(_speechPage.speechText);
                     speakerName.text = _speechPage.speakerName;
                     speakerPortrait.sprite = _speechPage.speakerSprite;
-                    isQuestion = _speechPage.isQuestion;
 
                     //Set object active states
                     speakerNamePanel.SetActive(true);
@@ -86,8 +84,9 @@ namespace ClothesShop.Managers
         {
             Initialize(ref _speechPage);
             speechPanel.SetActive(true);
-            speechText.StopAllCoroutines();
-            yield return speechText.StartCoroutine(speechText.AnimateTextCoroutine(_speechPage.speechText));
+            //speechText.StopAllCoroutines(); //Not necessary anymore
+            yield return speechText.AnimateText(_speechPage.speechText, _speechPage.isDialog);
+            //yield return speechText.StartCoroutine(speechText.AnimateTextCoroutine(_speechPage.speechText));
         }
 
         public IEnumerator ShowSpeechPages(SpeechPage[] _speechPages)
@@ -100,12 +99,6 @@ namespace ClothesShop.Managers
             darkerBackground.SetTrigger("Lighten Background");
         }
 
-        public void ShowPanel(string _stringToDisplay)
-        {
-            speechPanel.SetActive(true);
-            speechText.AnimateText(_stringToDisplay);
-        }
-
         private IEnumerator OnTextAnimationFinishedCoroutine()
         {
             CoroutineWithData cd = new CoroutineWithData(this, yesNoPromptPanel.WaitForSelection());
@@ -116,7 +109,7 @@ namespace ClothesShop.Managers
 
         public void OnTextAnimationFinished()
         {
-            speechText.StopAllCoroutines();
+            //speechText.StopAllCoroutines();
             speechPanel.SetActive(false);
             //if (isQuestion)
             //{
