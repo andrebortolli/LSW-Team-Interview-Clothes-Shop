@@ -20,7 +20,7 @@ namespace ClothesShop.UI
             textMeshProUGUI = GetComponent<TextMeshProUGUI>();
         }
 
-        private void OnEnable()
+        private void Update()
         {
             textMeshProUGUI.text = string.Format("{0}{1}{2}", prefixString, intVariable.Value.ToString(), suffixString);
         }

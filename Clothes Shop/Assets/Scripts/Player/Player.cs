@@ -15,12 +15,12 @@ namespace ClothesShop.SO.Player
         public Inventory.Inventory inventory;
         public IntVariable wallet;
 
-        public void BuyItem(Item.Item _itemToBuy)
+        public virtual void BuyItem(Item.Item _itemToBuy)
         {
             inventory.AddItem(_itemToBuy);
             wallet.SetValue(wallet.Value - _itemToBuy.value);
         }
-        public void SellItem(Item.Item _itemToSell)
+        public virtual void SellItem(Item.Item _itemToSell)
         {
             inventory.RemoveItem(_itemToSell);
             wallet.SetValue(wallet.Value + _itemToSell.resellValue);
