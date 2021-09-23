@@ -14,6 +14,13 @@ namespace ClothesShop.UI.Menus.Prefabs
         public Image itemIcon;
         Transform oldParent;
 
+        public void ReturnToOldParent()
+        {
+            MyRectTransform.SetParent(oldParent);
+            MyRectTransform.anchoredPosition = Vector2.zero;
+            oldParent = null;
+        }
+
         public void Initialize(Item _item)
         {
             myItem = _item;
@@ -24,7 +31,7 @@ namespace ClothesShop.UI.Menus.Prefabs
         {
             base.OnBeginDrag(eventData);
             oldParent = this.transform.parent;
-            this.transform.parent = ParentCanvas.transform;
+            MyRectTransform.SetParent(ParentCanvas.transform);
         }
 
         public override void OnDrag(PointerEventData eventData)
@@ -35,6 +42,15 @@ namespace ClothesShop.UI.Menus.Prefabs
         public override void OnEndDrag(PointerEventData eventData)
         {
             base.OnEndDrag(eventData);
+            if (MyRectTransform.parent.GetComponent<ItemSlot>() == null)
+            {
+                Debug.Log("Is not an Item Slot! Return!");
+                ReturnToOldParent();
+            }
+            else
+            {
+                Debug.Log("Is Item Slot.");
+            }
         }
 
         public override void OnInitializePotentialDrag(PointerEventData eventData)
