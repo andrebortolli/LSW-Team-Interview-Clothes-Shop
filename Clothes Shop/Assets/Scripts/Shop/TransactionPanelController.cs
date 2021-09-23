@@ -34,8 +34,17 @@ namespace ClothesShop.UI.Menus
             ClearContents();
         }
 
+        public void BuyCurrentItem()
+        {
+            if (currentSelectedItem != null)
+            {
+                TransactionController.Instance.ProcessTransaction(TransactionController.Instance.CreateTransaction(currentSelectedItem));
+            }
+        }
+
         public void ClearContents()
         {
+            currentSelectedItem = null;
             foreach (Transform child in contentsTransform.transform)
             {
                 GameObject.Destroy(child.gameObject);

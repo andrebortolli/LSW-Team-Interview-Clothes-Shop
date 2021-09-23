@@ -19,7 +19,7 @@ namespace ClothesShop.Mechanics.Interaction
             player2 = _interactedGameObject.GetComponent<PlayerData>().data;
             if (player1 != null && player2 != null)
             {
-                _gameManager.TransactionController.StartCoroutine(_gameManager.TransactionController.ShopInterationEnumerator(player1, player2, pagesToDisplay));
+                _gameManager.TransactionController.StartCoroutine(_gameManager.TransactionController.ShopInteractionEnumerator(player1, player2, pagesToDisplay));
             }
         }
     }
