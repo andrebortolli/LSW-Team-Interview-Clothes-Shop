@@ -26,7 +26,7 @@ namespace ClothesShop.Managers
         [SerializeField] private TextMeshProUGUI speakerName;
         [SerializeField] private AnimatedText speechText;
         [SerializeField] private Image speakerPortrait;
-        [SerializeField] private YesNoPrompt yesNoPromptPanel;
+        [SerializeField] private DialogController dialogController;
 
         private SpeechPage currentSpeechPage;
 
@@ -78,6 +78,12 @@ namespace ClothesShop.Managers
                     speakerPortrait.gameObject.SetActive(true);
                     break;
             }
+            dialogController.InstantiateOptions(_speechPage.dialogOptions);
+            //foreach(SpeechPageDialogOption speechPageDialogOption in _speechPage.dialogOptions)
+            //{
+            //    Debug.Log(speechPageDialogOption.optionName);
+
+            //}
         }
 
         private IEnumerator ShowSpeechPage(SpeechPage _speechPage)
@@ -101,7 +107,7 @@ namespace ClothesShop.Managers
 
         private IEnumerator OnTextAnimationFinishedCoroutine()
         {
-            CoroutineWithData cd = new CoroutineWithData(this, yesNoPromptPanel.WaitForSelection());
+            CoroutineWithData cd = new CoroutineWithData(this, dialogController.WaitForSelection());
             yield return cd.coroutine;
             Debug.Log("result is " + (bool)cd.result);
             speechPanel.SetActive(false);
