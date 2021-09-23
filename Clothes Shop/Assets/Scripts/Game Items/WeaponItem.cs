@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ClothesShop.SO.Item.Weapon
+namespace ClothesShop.SO.Item.Equippable.Weapon
 {
     [CreateAssetMenu (menuName = "Game/Items/New Weapon Item")]
-    public class WeaponItem : Item
+    public class WeaponItem : EquippableItem
     {
-        public WeaponItem()
-        {
 
-        }
     }
 }

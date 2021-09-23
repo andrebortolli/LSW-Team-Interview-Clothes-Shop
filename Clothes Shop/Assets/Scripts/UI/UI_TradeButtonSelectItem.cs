@@ -10,12 +10,12 @@ namespace ClothesShop.UI
     public class UI_TradeButtonSelectItem : MonoBehaviour
     {
         private Button myButton;
-        private MenuUI_ItemPrefab menuUI_ItemPrefab;
+        private InventoryItemPrefab menuUI_ItemPrefab;
 
         private void Awake()
         {
             myButton = GetComponent<Button>();
-            menuUI_ItemPrefab = GetComponent<MenuUI_ItemPrefab>();
+            menuUI_ItemPrefab = GetComponent<InventoryItemPrefab>();
         }
 
         private void OnEnable()

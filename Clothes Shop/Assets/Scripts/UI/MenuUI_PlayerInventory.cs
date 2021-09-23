@@ -43,7 +43,7 @@ namespace ClothesShop.UI.Menus
             {
                 GameObject itemMenuPrefabInstance = Instantiate(itemMenuPrefab, contentsTransform);
                 itemMenuPrefabInstance.name = item.itemName;
-                itemMenuPrefabInstance.GetComponent<Prefabs.MenuUI_ItemPrefab>().Initialize(item);
+                itemMenuPrefabInstance.GetComponent<Prefabs.InventoryItemPrefab>().Initialize(item);
             }
             inventoryValue.text = string.Format("Value: {0:D4} / {1:D4}", playerInventory.GetMonetaryValue(false), playerInventory.GetMonetaryValue(true));
         }
