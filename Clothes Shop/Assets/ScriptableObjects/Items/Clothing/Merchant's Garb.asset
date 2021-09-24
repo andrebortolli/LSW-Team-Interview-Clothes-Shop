@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d9a67a0a2f4714abe7b5b86b36d138, type: 3}
+  m_Name: Merchant's Garb
+  m_EditorClassIdentifier: 
+  id: 3
+  itemName: Merchant's Garb
+  description: Something about this feels oddly familiar.
+  value: 50
+  resellValue: 25
+  uiSprite: {fileID: 4743604252110829558, guid: 385f0825d6d9f9947a7fe61f04f971ee,
+    type: 3}
+  previewSprite: {fileID: 4743604252110829558, guid: 385f0825d6d9f9947a7fe61f04f971ee,
+    type: 3}
+  animatorOverrideController: {fileID: 22100000, guid: 6f7488818d0775042ac2ec471baf05cb,
+    type: 2}
+  singleUse: 0
+  onUse: {fileID: 0}
+  equippableType: 1
+  isEquipped: 0
+  onEquip: {fileID: 11400000, guid: d1e3d515d31b6a14cb305ab1537f7afa, type: 2}
+  onUnequip: {fileID: 11400000, guid: a9ba84ac08fad7449b7b669c86720ed7, type: 2}

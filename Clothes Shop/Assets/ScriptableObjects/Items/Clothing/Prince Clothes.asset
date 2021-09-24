@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75d9a67a0a2f4714abe7b5b86b36d138, type: 3}
-  m_Name: Blonde Wig
+  m_Name: Prince Clothes
   m_EditorClassIdentifier: 
   id: 3
-  itemName: Blonde Wig
-  description: By equipping this wig, it will change your hair into a blonde hair
+  itemName: Prince's Clothes
+  description: Guards! Make sure the prince doesn't leave this room until I come
+    and get him..
   value: 50
   resellValue: 25
   uiSprite: {fileID: 3704470676555248339, guid: 4f804b7294fcc1c48af1c0912531560b,
@@ -25,7 +26,7 @@ MonoBehaviour:
     type: 2}
   singleUse: 0
   onUse: {fileID: 0}
-  equippableType: 2
+  equippableType: 1
   isEquipped: 0
   onEquip: {fileID: 11400000, guid: d1e3d515d31b6a14cb305ab1537f7afa, type: 2}
   onUnequip: {fileID: 11400000, guid: a9ba84ac08fad7449b7b669c86720ed7, type: 2}

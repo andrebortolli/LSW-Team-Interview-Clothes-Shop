@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d9a67a0a2f4714abe7b5b86b36d138, type: 3}
+  m_Name: Prince Wig
+  m_EditorClassIdentifier: 
+  id: 3
+  itemName: Prince's Wig
+  description: Yes, make sure he doesn't leave.
+  value: 50
+  resellValue: 25
+  uiSprite: {fileID: 3704470676555248339, guid: 4f804b7294fcc1c48af1c0912531560b,
+    type: 3}
+  previewSprite: {fileID: 3704470676555248339, guid: 4f804b7294fcc1c48af1c0912531560b,
+    type: 3}
+  animatorOverrideController: {fileID: 22100000, guid: 50c27726abdba8e4e8d2da0dcd3aee1f,
+    type: 2}
+  singleUse: 0
+  onUse: {fileID: 0}
+  equippableType: 2
+  isEquipped: 0
+  onEquip: {fileID: 11400000, guid: d1e3d515d31b6a14cb305ab1537f7afa, type: 2}
+  onUnequip: {fileID: 11400000, guid: a9ba84ac08fad7449b7b669c86720ed7, type: 2}

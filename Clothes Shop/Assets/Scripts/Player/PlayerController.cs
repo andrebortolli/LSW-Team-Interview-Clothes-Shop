@@ -23,7 +23,7 @@ namespace ClothesShop.Players
 
         private Animator playerAnimator;
         private AnimatorOverrideController defaultAOC;
-        private AnimatorOverrideController newAOC;
+        private AnimatorOverrideController currentAOC;
         private Rigidbody2D playerRigidbody;
         private Interactable interactableObject;
 
@@ -68,6 +68,7 @@ namespace ClothesShop.Players
             playerData = GetComponent<PlayerData>();
             playerAnimator = GetComponent<Animator>();
             playerRigidbody = GetComponent<Rigidbody2D>();
+            defaultAOC = new AnimatorOverrideController(playerAnimator.runtimeAnimatorController);
             TriggerEquippedItemsEvents();
         }
 
@@ -131,7 +132,7 @@ namespace ClothesShop.Players
 
             workingAOC.name = "FindAndReplace Custom";
 
-            for(int i = 0; i < _baseAOC.animationClips.Length; i++)
+            for (int i = 0; i < _baseAOC.animationClips.Length; i++)
             {
                 Debug.Log("<color=brown>Current Animation Name:</color> " + _baseAOC.animationClips[i].name + " | " + _aocToApply.animationClips[i].name + " | " + _match);
                 if (_baseAOC.animationClips[i].name == _aocToApply.animationClips[i].name && _aocToApply.animationClips[i].name.Contains(_match))
@@ -146,77 +147,58 @@ namespace ClothesShop.Players
                 }
             }
 
-           
+
             Debug.Log("Applying Overrides");
             workingAOC.ApplyOverrides(workingAOCAnimPairList);
 
             return workingAOC;
         }
 
-        public void ProcessAOCs()
+        public void ProcessAllEquippedItemsAOCs()
         {
-            Debug.Log("ProcessAOCs Initialized");
-            AnimatorOverrideController currentAOC = new AnimatorOverrideController(playerAnimator.runtimeAnimatorController);
-
-            if (playerData.data.inventory.EquippedItems.Count == 0)
-            {
-
-            }
-
+            List<Item> aocUpdatableItems = new List<Item>();
             foreach (Item item in playerData.data.inventory.EquippedItems)
             {
-                Debug.Log("Equipped Item Name: " + item.itemName);
-                if (item.equippableType != Item.EquippableType.NonEquippable)
+                if (item.equippableType != Item.EquippableType.NonEquippable && item.equippableType != Item.EquippableType.Accessory)
                 {
-                    Debug.Log("Is equippable");
-
-                    switch (item.equippableType)
-                    {
-                        case Item.EquippableType.Body:
-                            Debug.Log("Equippable Type: Body");
-                            break;
-                        case Item.EquippableType.Hair:
-                            Debug.Log("Equippable Type: Hair");
-                            //playerAnimator.runtimeAnimatorController = item.animatorOverrideController;
-                            playerAnimator.runtimeAnimatorController = FindAndReplaceAnimations(currentAOC, item.animatorOverrideController, "_Hair");
-                            break;
-                        case Item.EquippableType.Head:
-                            Debug.Log("Equippable Type: Head");
-                            break;
-                    }
+                    aocUpdatableItems.Add(item);
                 }
-                else
+            }
+            if (aocUpdatableItems.Count != 0)
+            {
+                foreach (Item item in aocUpdatableItems)
                 {
-                    Debug.Log("Is not equippable.");
+                    ProcessAOC(item);
                 }
+            }
+            else
+            {
+                playerAnimator.runtimeAnimatorController = defaultAOC;
             }
         }
 
         public void ProcessAOC(Item _item)
         {
             Debug.Log("Processing Item AOC: " + _item.itemName);
-            AnimatorOverrideController currentAOC = new AnimatorOverrideController(playerAnimator.runtimeAnimatorController);
-            if (_item.equippableType != Item.EquippableType.NonEquippable)
-            {
-                Debug.Log("Item is equippable. Type: <color=yellow>" + _item.equippableType.ToString() + "</color>");
 
-                switch (_item.equippableType)
-                {
-                    case Item.EquippableType.Body:
-                        playerAnimator.runtimeAnimatorController = FindAndReplaceAnimations(currentAOC, _item.animatorOverrideController, "_Body");
-                        break;
-                    case Item.EquippableType.Hair:
-                        playerAnimator.runtimeAnimatorController = FindAndReplaceAnimations(currentAOC, _item.animatorOverrideController, "_Hair");
-                        break;
-                    case Item.EquippableType.Head:
-                        playerAnimator.runtimeAnimatorController = FindAndReplaceAnimations(currentAOC, _item.animatorOverrideController, "_Head");
-                        break;
-                }
-            }
-            else
+            if (currentAOC == null)
             {
-                Debug.Log("Item is not equippable.");
+                currentAOC = defaultAOC;
             }
+
+            switch (_item.equippableType)
+            {
+                case Item.EquippableType.Body:
+                    playerAnimator.runtimeAnimatorController = FindAndReplaceAnimations(currentAOC, _item.animatorOverrideController, "_Body");
+                    break;
+                case Item.EquippableType.Hair:
+                    playerAnimator.runtimeAnimatorController = FindAndReplaceAnimations(currentAOC, _item.animatorOverrideController, "_Hair");
+                    break;
+                case Item.EquippableType.Head:
+                    playerAnimator.runtimeAnimatorController = FindAndReplaceAnimations(currentAOC, _item.animatorOverrideController, "_Head");
+                    break;
+            }
+            currentAOC = new AnimatorOverrideController(playerAnimator.runtimeAnimatorController);
         }
 
 
