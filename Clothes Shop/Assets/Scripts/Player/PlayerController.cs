@@ -36,10 +36,14 @@ namespace ClothesShop.Players
 
         #region Events
         [Serializable]
+        public class OnInteracted : UnityEvent { }
+
+        [Serializable]
         public class OnInteractableWithinReach : UnityEvent<Interactable> { }
         [Serializable]
         public class OnInteractableOutOfReach : UnityEvent<Interactable> { }
 
+        public OnInteracted onInteracted;
         public OnInteractableWithinReach onInteractableWithinReach;
         public OnInteractableOutOfReach onInteractableOutOfReach;
 
@@ -87,6 +91,7 @@ namespace ClothesShop.Players
                 if (Input.GetKeyDown(GameSettings.InteractionKey) && interactableObject != null)
                 {
                     interactableObject.onInteraction?.Invoke(ClothesShop.Managers.GameManager.Instance, this.gameObject, interactableObject.gameObject);
+                    onInteracted?.Invoke();
                 }
             }
         }

@@ -22,6 +22,7 @@ namespace ClothesShop.SO.Item
         public int resellValue; //Item selling value
         public Sprite uiSprite; //Sprite shown in the UI
         public Sprite previewSprite; //Sprite shown in the buying screen
+        public AnimatorOverrideController animatorOverrideController; //AOC used for outfits;
 
         [Header("Use")]
         public bool singleUse;
@@ -30,16 +31,17 @@ namespace ClothesShop.SO.Item
         public enum EquippableType
         {
             NonEquippable,
-            Hat,
-            Shirt,
-            Pants,
-            Boots,
-            Weapon
+            Body,
+            Hair,
+            Head,
+            Weapon,
+            Accessory
         }
 
         [Header("Equip")]
         [SerializeField] public EquippableType equippableType;
         [HideInInspector] public bool isEquipped;
+
 
         public GameEvent onEquip;
         public GameEvent onUnequip;

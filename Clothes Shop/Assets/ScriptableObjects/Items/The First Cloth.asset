@@ -21,9 +21,10 @@ MonoBehaviour:
     type: 3}
   previewSprite: {fileID: -2725728968253761336, guid: 26a1f75069f5a704798634759c62122b,
     type: 3}
+  animatorOverrideController: {fileID: 0}
   singleUse: 0
   onUse: {fileID: 0}
-  equippableType: 2
+  equippableType: 1
   isEquipped: 1
   onEquip: {fileID: 11400000, guid: f62691106cf19d2429e31942c1b806aa, type: 2}
   onUnequip: {fileID: 11400000, guid: 8a3e525d1391534438a207ac5b5478f7, type: 2}
