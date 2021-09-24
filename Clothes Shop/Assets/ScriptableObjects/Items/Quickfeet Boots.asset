@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d9a67a0a2f4714abe7b5b86b36d138, type: 3}
   m_Name: Quickfeet Boots
   m_EditorClassIdentifier: 
-  id: 1
+  id: 2
   itemName: Quickfeet Boots
   description: These boots will make your run speed twice as fast.
   value: 50
@@ -21,6 +21,7 @@ MonoBehaviour:
     type: 3}
   previewSprite: {fileID: -1500395669165490261, guid: 26a1f75069f5a704798634759c62122b,
     type: 3}
+  animatorOverrideController: {fileID: 0}
   singleUse: 0
   onUse: {fileID: 0}
   equippableType: 4

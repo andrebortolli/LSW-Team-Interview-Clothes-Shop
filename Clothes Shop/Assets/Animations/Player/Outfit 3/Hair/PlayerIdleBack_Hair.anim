@@ -48,10 +48,10 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -2473454646853352467, guid: 41db78b25ac204b43ae7da97ec499406,
+      value: {fileID: -2473454646853352467, guid: 755c5e880bb1b8b48b05eee03a029d26,
         type: 3}
     - time: 0.016666668
-      value: {fileID: -2473454646853352467, guid: 41db78b25ac204b43ae7da97ec499406,
+      value: {fileID: -2473454646853352467, guid: 755c5e880bb1b8b48b05eee03a029d26,
         type: 3}
     attribute: m_Sprite
     path: Hair
@@ -79,8 +79,8 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -2473454646853352467, guid: 41db78b25ac204b43ae7da97ec499406, type: 3}
-    - {fileID: -2473454646853352467, guid: 41db78b25ac204b43ae7da97ec499406, type: 3}
+    - {fileID: -2473454646853352467, guid: 755c5e880bb1b8b48b05eee03a029d26, type: 3}
+    - {fileID: -2473454646853352467, guid: 755c5e880bb1b8b48b05eee03a029d26, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
