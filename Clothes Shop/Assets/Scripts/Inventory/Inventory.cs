@@ -10,11 +10,24 @@ namespace ClothesShop.SO.Inventory
     [CreateAssetMenu(menuName = "Game/New Inventory")]
     public class Inventory : ScriptableObject
     {
-        [SerializeField] //SerializeField for the inventory to be visible on Unity's Editor
-        private List<Item.Item> items;
+         //SerializeField for the inventory to be visible on Unity's Editor
+        [SerializeField] private List<Item.Item> items;
+
+        [SerializeField] private List<Item.Item> equippedItems;
         public List<Item.Item> Items { get => items; set => items = value; }
+        public List<Item.Item> EquippedItems { get => equippedItems; set => equippedItems = value; }
 
         #region Inventory Management Methods
+
+        public void EquipItem(int _itemIndexOnInventory)
+        {
+            if (Items.Count > 0 && _itemIndexOnInventory <= Items.Count)
+            {
+                EquippedItems.Add(Items[_itemIndexOnInventory]);
+                Items.RemoveAt(_itemIndexOnInventory);
+            }
+        }
+
 
         /// <summary>
         /// Removes an item at the specified index.

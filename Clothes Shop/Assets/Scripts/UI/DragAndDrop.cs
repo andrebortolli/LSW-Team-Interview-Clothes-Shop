@@ -36,7 +36,7 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         if(eventData.dragging)
         {
-            MyRectTransform.anchoredPosition += eventData.delta / ParentCanvas.scaleFactor ;
+            MyRectTransform.anchoredPosition += eventData.delta / ParentCanvas.scaleFactor;
         }
     }
 

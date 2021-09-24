@@ -16,3 +16,5 @@ MonoBehaviour:
   speakerName: Luka
   speechText: Hello there! Welcome to my shop!
   speakerSprite: {fileID: 21300000, guid: 02c296088ae636b459e0231b48abb033, type: 3}
+  isDialog: 0
+  dialogOptions: []

@@ -7,12 +7,48 @@ using UnityEngine.EventSystems;
 
 namespace ClothesShop.UI.Menus.Prefabs
 {
-    public class InventoryItemPrefab : DragAndDrop
+    public class InventoryItemButton : DragAndDrop
     {
-        public Item myItem;
+        private Item myItem;
+        //private Button myButton;
+        private int myInventoryItemIndex;
+        private PlayerInventoryController playerInventoryController;
+        Transform oldParent;
+
         [Header("Prefab Fields")]
         public Image itemIcon;
-        Transform oldParent;
+
+        public Item MyItem { get => myItem; set => myItem = value; }
+        public int MyInventoryItemIndex { get => myInventoryItemIndex; set => myInventoryItemIndex = value; }
+
+        //private void Awake()
+        //{
+
+        //    myButton = GetComponent<Button>();
+        //}
+
+        private void OnEnable()
+        {
+            //myButton.onClick.AddListener(OnClick);
+        }
+
+        private void OnDisable()
+        {
+            //myButton.onClick.RemoveListener(OnClick);
+        }
+
+        public void Initialize(PlayerInventoryController _picRef, Item _item, int _inventoryItemIndex)
+        {
+            playerInventoryController = _picRef;
+            MyItem = _item;
+            MyInventoryItemIndex = _inventoryItemIndex;
+            itemIcon.sprite = MyItem.uiSprite;
+        }
+
+        private void OnClick()
+        {
+            //playerInventoryController.onCurrentSelectedItemChanged?.Invoke(myItem, myInventoryItemIndex);
+        }
 
         public void ReturnToOldParent()
         {
@@ -21,10 +57,11 @@ namespace ClothesShop.UI.Menus.Prefabs
             oldParent = null;
         }
 
-        public void Initialize(Item _item)
+        public void Recenter()
         {
-            myItem = _item;
-            itemIcon.sprite = myItem.uiSprite;
+            MyRectTransform.anchorMin = new Vector2(0.5f, 0.5f);
+            MyRectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+            MyRectTransform.anchoredPosition = Vector2.zero;
         }
 
         public override void OnBeginDrag(PointerEventData eventData)

@@ -15,7 +15,6 @@ namespace ClothesShop.SO.Player
         public Inventory.Inventory inventory;
         public IntVariable wallet;
 
-
         public virtual void BuyItem(Item.Item _itemToBuy)
         {
             inventory.AddItem(_itemToBuy);

@@ -1,4 +1,6 @@
-﻿using ClothesShop.UI.Menus.Prefabs;
+﻿using ClothesShop.SO.Inventory;
+using ClothesShop.SO.Item;
+using ClothesShop.UI.Menus.Prefabs;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,12 +9,14 @@ using UnityEngine.EventSystems;
 
 public class ItemSlot : MonoBehaviour, IDropHandler
 {
+    [SerializeField] private Inventory playerInventory;
     private RectTransform myRectTransform;
+    private InventoryItemButton inventoryItemButton;
+    private Item myEquippedItem;
+    private int myEquippedItemIndex;
 
     public RectTransform MyRectTransform { get => myRectTransform; set => myRectTransform = value; }
-
-    private InventoryItemPrefab inventoryItemPrefab;
-
+    public Item MyEquippedItem { get => myEquippedItem; set => myEquippedItem = value; }
 
     void Awake()
     {
@@ -26,12 +30,14 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             if (eventData.pointerDrag != null)
             {
                 RectTransform droppedObject = eventData.pointerDrag.GetComponent<RectTransform>();
-                inventoryItemPrefab = droppedObject.GetComponent<InventoryItemPrefab>();
+                inventoryItemButton = droppedObject.GetComponent<InventoryItemButton>();
 
                 droppedObject.SetParent(this.transform);
-                droppedObject.anchorMin = new Vector2(0.5f, 0.5f);
-                droppedObject.anchorMax = new Vector2(0.5f, 0.5f);
-                droppedObject.anchoredPosition = Vector2.zero;
+                inventoryItemButton.Recenter();
+
+                myEquippedItem = inventoryItemButton.MyItem;
+                myEquippedItemIndex = inventoryItemButton.MyInventoryItemIndex;
+                playerInventory.EquipItem(myEquippedItemIndex);
             }
         }
     }

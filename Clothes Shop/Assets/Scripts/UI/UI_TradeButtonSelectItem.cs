@@ -10,12 +10,12 @@ namespace ClothesShop.UI
     public class UI_TradeButtonSelectItem : MonoBehaviour
     {
         private Button myButton;
-        private InventoryItemPrefab menuUI_ItemPrefab;
+        private InventoryItemButton menuUI_ItemPrefab;
 
         private void Awake()
         {
             myButton = GetComponent<Button>();
-            menuUI_ItemPrefab = GetComponent<InventoryItemPrefab>();
+            menuUI_ItemPrefab = GetComponent<InventoryItemButton>();
         }
 
         private void OnEnable()
@@ -30,7 +30,7 @@ namespace ClothesShop.UI
 
         private void OnButtonClick()
         {
-            TradeController.Instance.playerSelectedItem = menuUI_ItemPrefab.myItem;
+            TradeController.Instance.playerSelectedItem = menuUI_ItemPrefab.MyItem;
         }
     }
 
