@@ -28,32 +28,13 @@ namespace ClothesShop.SO.Inventory
             }
         }
 
-
-        /// <summary>
-        /// Removes an item at the specified index.
-        /// </summary>
-        /// <param name="_index"></param>
-        public void RemoveItemAt(int _index)
+        public void UnequipItem(Item.Item _item)
         {
-            Items.RemoveAt(_index);
-        }
-
-        /// <summary>
-        /// Removes a specified item
-        /// </summary>
-        /// <param name="_itemToRemove"></param>
-        public void RemoveItem(Item.Item _itemToRemove)
-        {
-            Items.Remove(_itemToRemove);
-        }
-
-        /// <summary>
-        /// Adds a specified item to the inventory.
-        /// </summary>
-        /// <param name="_itemToAdd"></param>
-        public void AddItem(Item.Item _itemToAdd)
-        {
-            Items.Add(_itemToAdd);
+            if(EquippedItems.Contains(_item))
+            {
+                Items.Add(_item);
+                EquippedItems.Remove(_item);
+            }
         }
         #endregion
 

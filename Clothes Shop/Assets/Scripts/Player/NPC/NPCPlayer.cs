@@ -14,14 +14,14 @@ namespace ClothesShop.SO.Player.NPC
 
         public override void BuyItem(Item.Item _itemToBuy)
         {
-            inventory.AddItem(_itemToBuy);
+            inventory.Items.Add(_itemToBuy);
             wallet.SetValue(wallet.Value - _itemToBuy.resellValue);
             //Debug.Log(_itemToBuy.resellValue);
         }
 
         public override void SellItem(Item.Item _itemToSell)
         {
-            inventory.RemoveItem(_itemToSell);
+            inventory.Items.Remove(_itemToSell);
             wallet.SetValue(wallet.Value + _itemToSell.value);
             //Debug.Log(_itemToSell.value);
         }
@@ -32,12 +32,12 @@ namespace ClothesShop.SO.Player.NPC
             if (inventory.Items[_removeIndex] == _itemToSell)
             {
                 Debug.Log("Removed Exact Item");
-                inventory.RemoveItemAt(_removeIndex);
+                inventory.Items.RemoveAt(_removeIndex);
             }
             else
             {
                 Debug.Log("Removed First Item");
-                inventory.RemoveItem(_itemToSell);
+                inventory.Items.Remove(_itemToSell);
             }
             wallet.SetValue(wallet.Value + _itemToSell.value);
         }

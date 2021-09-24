@@ -15,7 +15,7 @@ namespace ClothesShop.UI.Menus
 
         [Header("Menu Objects")]
         public TextMeshProUGUI inventoryValue;
-        public Transform contentsTransform;
+        public RectTransform contentsTransform;
         public GameObject itemMenuPrefab;
 
         [Header("UI")]

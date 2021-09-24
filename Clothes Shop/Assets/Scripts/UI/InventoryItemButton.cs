@@ -13,7 +13,7 @@ namespace ClothesShop.UI.Menus.Prefabs
         //private Button myButton;
         private int myInventoryItemIndex;
         private PlayerInventoryController playerInventoryController;
-        Transform oldParent;
+        public Transform oldParent;
 
         [Header("Prefab Fields")]
         public Image itemIcon;
@@ -53,7 +53,7 @@ namespace ClothesShop.UI.Menus.Prefabs
         public void ReturnToOldParent()
         {
             MyRectTransform.SetParent(oldParent);
-            MyRectTransform.anchoredPosition = Vector2.zero;
+            Recenter();
             oldParent = null;
         }
 
@@ -79,14 +79,15 @@ namespace ClothesShop.UI.Menus.Prefabs
         public override void OnEndDrag(PointerEventData eventData)
         {
             base.OnEndDrag(eventData);
-            if (MyRectTransform.parent.GetComponent<ItemSlot>() == null)
+            if (MyRectTransform.parent.GetComponent<ItemSlot>() || MyRectTransform.parent.GetComponent<InventoryDropHandler>())
             {
-                Debug.Log("Is not an Item Slot! Return!");
-                ReturnToOldParent();
+                Debug.Log("Is valid item slot.");
             }
             else
             {
-                Debug.Log("Is Item Slot.");
+                Debug.Log("Is not an Item Slot! Return!");
+                ReturnToOldParent();
+
             }
         }
 
@@ -97,12 +98,12 @@ namespace ClothesShop.UI.Menus.Prefabs
 
         public override void OnPointerDown(PointerEventData eventData)
         {
-            base.OnPointerDown(eventData);
+            Debug.Log("OnPointerDown");
         }
 
         public override void OnPointerUp(PointerEventData eventData)
         {
-            base.OnPointerUp(eventData);
+            Debug.Log("OnPointerUp");
         }
     }
 }

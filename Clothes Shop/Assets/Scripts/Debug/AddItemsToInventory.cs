@@ -20,7 +20,7 @@ public class AddItemsToInventory : MonoBehaviour
                 {
                     foreach(Player player in playersToAddItems)
                     {
-                        player.inventory.AddItem(item);
+                        player.inventory.Items.Add(item);
                     }
                 }
             }

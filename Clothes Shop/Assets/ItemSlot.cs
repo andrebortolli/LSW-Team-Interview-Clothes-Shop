@@ -1,5 +1,6 @@
 ﻿using ClothesShop.SO.Inventory;
 using ClothesShop.SO.Item;
+using ClothesShop.UI.Menus;
 using ClothesShop.UI.Menus.Prefabs;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,8 +10,9 @@ using UnityEngine.EventSystems;
 
 public class ItemSlot : MonoBehaviour, IDropHandler
 {
-    [SerializeField] private Inventory playerInventory;
+    [SerializeField] private PlayerInventoryController playerInventoryController;
     private RectTransform myRectTransform;
+
     private InventoryItemButton inventoryItemButton;
     private Item myEquippedItem;
     private int myEquippedItemIndex;
@@ -32,12 +34,24 @@ public class ItemSlot : MonoBehaviour, IDropHandler
                 RectTransform droppedObject = eventData.pointerDrag.GetComponent<RectTransform>();
                 inventoryItemButton = droppedObject.GetComponent<InventoryItemButton>();
 
-                droppedObject.SetParent(this.transform);
-                inventoryItemButton.Recenter();
+                if (inventoryItemButton)
+                {
 
-                myEquippedItem = inventoryItemButton.MyItem;
-                myEquippedItemIndex = inventoryItemButton.MyInventoryItemIndex;
-                playerInventory.EquipItem(myEquippedItemIndex);
+                    if (inventoryItemButton.oldParent != this.transform && inventoryItemButton.oldParent.GetComponent<ItemSlot>() == null)
+                    {
+                        droppedObject.SetParent(this.transform);
+                        inventoryItemButton.Recenter();
+
+                        myEquippedItem = inventoryItemButton.MyItem;
+                        myEquippedItemIndex = inventoryItemButton.MyInventoryItemIndex;
+                        playerInventoryController.playerInventory.EquipItem(myEquippedItemIndex);
+                        playerInventoryController.UpdateContents();
+                    }
+                    else
+                    {
+                        Debug.Log("Returned to same parent or another ItemSlot");
+                    }
+                }
             }
         }
     }

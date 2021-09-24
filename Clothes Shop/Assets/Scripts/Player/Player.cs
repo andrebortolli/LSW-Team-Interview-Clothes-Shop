@@ -17,12 +17,12 @@ namespace ClothesShop.SO.Player
 
         public virtual void BuyItem(Item.Item _itemToBuy)
         {
-            inventory.AddItem(_itemToBuy);
+            inventory.Items.Add(_itemToBuy);
             wallet.SetValue(wallet.Value - _itemToBuy.value);
         }
         public virtual void SellItem(Item.Item _itemToSell)
         {
-            inventory.RemoveItem(_itemToSell);
+            inventory.Items.Remove(_itemToSell);
             wallet.SetValue(wallet.Value + _itemToSell.resellValue);
         }
         public virtual void SellItem(Item.Item _itemToSell, int _removeIndex)
@@ -31,12 +31,12 @@ namespace ClothesShop.SO.Player
             if (inventory.Items[_removeIndex] == _itemToSell)
             {
                 Debug.Log("Removed Exact Item");
-                inventory.RemoveItemAt(_removeIndex);
+                inventory.Items.RemoveAt(_removeIndex);
             }
             else
             {
                 Debug.Log("Removed First Item");
-                inventory.RemoveItem(_itemToSell);
+                inventory.Items.Remove(_itemToSell);
             }
             wallet.SetValue(wallet.Value + _itemToSell.resellValue);
         }
