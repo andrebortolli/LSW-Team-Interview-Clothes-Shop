@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4636982bef2d9d446acfb9274c29be9a, type: 3}
-  m_Name: Tutorial Book
+  m_Name: Hint Book
   m_EditorClassIdentifier: 
   pagesToDisplay:
   - {fileID: 11400000, guid: 1ddaf656fe3a1c644ab10d8bbac525ac, type: 2}

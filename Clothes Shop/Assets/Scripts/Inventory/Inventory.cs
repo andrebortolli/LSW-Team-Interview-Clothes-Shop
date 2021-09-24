@@ -23,8 +23,15 @@ namespace ClothesShop.SO.Inventory
         {
             if (Items.Count > 0 && _itemIndexOnInventory <= Items.Count)
             {
-                EquippedItems.Add(Items[_itemIndexOnInventory]);
-                Items.RemoveAt(_itemIndexOnInventory);
+                Item.Item itemToEquip = Items[_itemIndexOnInventory];
+                if (itemToEquip.equippableType != Item.Item.EquippableType.NonEquippable && itemToEquip.isEquipped == false)
+                {
+                    EquippedItems.Add(Items[_itemIndexOnInventory]);
+                    Items.RemoveAt(_itemIndexOnInventory);
+                    itemToEquip.onEquip.Raise();
+                    itemToEquip.isEquipped = true;
+                }
+
             }
         }
 
@@ -34,6 +41,8 @@ namespace ClothesShop.SO.Inventory
             {
                 Items.Add(_item);
                 EquippedItems.Remove(_item);
+                _item.onUnequip.Raise();
+                _item.isEquipped = false;
             }
         }
         #endregion

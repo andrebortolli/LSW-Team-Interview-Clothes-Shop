@@ -8,6 +8,7 @@ using ClothesShop.SO.Player;
 using ClothesShop.Mechanics.Interaction;
 using ClothesShop.Settings;
 using ScriptableObjectExtensions.Variables;
+using ClothesShop.SO.Item;
 
 namespace ClothesShop.Players
 {
@@ -61,6 +62,15 @@ namespace ClothesShop.Players
             playerData = GetComponent<PlayerData>();
             playerAnimator = GetComponent<Animator>();
             playerRigidbody = GetComponent<Rigidbody2D>();
+            TriggerEquippedItemsEvents();
+        }
+
+        public void TriggerEquippedItemsEvents()
+        {
+            foreach(Item item in playerData.data.inventory.EquippedItems)
+            {
+                item.onEquip.Raise();
+            }
         }
 
         // Start is called before the first frame update
@@ -173,12 +183,12 @@ namespace ClothesShop.Players
             if (Input.GetKey(GameSettings.RunKey))
             {
                 playerRigidbody.MovePosition(playerRigidbody.position + timeFixedMovementValues * runningSpeed.Value);
-                playerAnimator.speed = 1.0f;
+                playerAnimator.speed = Mathf.Sqrt(runningSpeed.Value) / 2;
             }
             else
             {
                 playerRigidbody.MovePosition(playerRigidbody.position + timeFixedMovementValues * walkingSpeed.Value);
-                playerAnimator.speed = 0.75f;
+                playerAnimator.speed = Mathf.Sqrt(walkingSpeed.Value) / 2;
             }
 
             //Update animator parameters

@@ -27,5 +27,21 @@ namespace ClothesShop.SO.Item
         public bool singleUse;
         public GameEvent onUse;
 
+        public enum EquippableType
+        {
+            NonEquippable,
+            Hat,
+            Shirt,
+            Pants,
+            Boots,
+            Weapon
+        }
+
+        [Header("Equip")]
+        [SerializeField] public EquippableType equippableType;
+        [HideInInspector] public bool isEquipped;
+
+        public GameEvent onEquip;
+        public GameEvent onUnequip;
     }
 }

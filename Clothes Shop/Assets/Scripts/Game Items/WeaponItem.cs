@@ -5,7 +5,7 @@ using UnityEngine;
 namespace ClothesShop.SO.Item.Equippable.Weapon
 {
     [CreateAssetMenu (menuName = "Game/Items/New Weapon Item")]
-    public class WeaponItem : EquippableItem
+    public class WeaponItem : Item
     {
         
     }
