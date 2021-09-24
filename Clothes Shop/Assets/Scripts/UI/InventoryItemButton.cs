@@ -69,6 +69,7 @@ namespace ClothesShop.UI.Menus.Prefabs
             base.OnBeginDrag(eventData);
             oldParent = this.transform.parent;
             MyRectTransform.SetParent(ParentCanvas.transform);
+
         }
 
         public override void OnDrag(PointerEventData eventData)
@@ -98,11 +99,14 @@ namespace ClothesShop.UI.Menus.Prefabs
 
         public override void OnPointerDown(PointerEventData eventData)
         {
+            base.OnPointerDown(eventData);
+            playerInventoryController.onLastSelectedItemChange?.Invoke(myItem, myInventoryItemIndex);
             Debug.Log("OnPointerDown");
         }
 
         public override void OnPointerUp(PointerEventData eventData)
         {
+            base.OnPointerUp(eventData);
             Debug.Log("OnPointerUp");
         }
     }

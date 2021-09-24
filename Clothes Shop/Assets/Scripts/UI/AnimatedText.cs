@@ -51,6 +51,7 @@ namespace ClothesShop.UI
 
         private void OnDisable()
         {
+            StopAllCoroutines();
             onTextAnimationPageFinished.RemoveListener(OnPageFinished);
             onTextAnimationNewPage.RemoveListener(OnNewPageStarted);
         }

@@ -26,6 +26,11 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         MyCanvasGroup = GetComponent<CanvasGroup>();
     }
 
+    private void Update()
+    {
+
+    }
+
     public virtual void OnBeginDrag(PointerEventData eventData)
     {
         MyCanvasGroup.blocksRaycasts = false;
@@ -34,7 +39,7 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public virtual void OnDrag(PointerEventData eventData)
     {
-        if(eventData.dragging)
+        if (eventData.dragging)
         {
             MyRectTransform.anchoredPosition += eventData.delta / ParentCanvas.scaleFactor;
         }
