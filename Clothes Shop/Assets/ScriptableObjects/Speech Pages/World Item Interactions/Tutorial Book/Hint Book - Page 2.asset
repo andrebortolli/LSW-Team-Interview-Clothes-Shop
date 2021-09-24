@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speechStyle: 1
   speakerName: Hint #2
-  speechText: If you hold the X key while walking, you'll start to run!
+  speechText: If you press the I key, you'll open the player's inventory
   speakerSprite: {fileID: 0}
   isDialog: 0
   dialogOptions: []

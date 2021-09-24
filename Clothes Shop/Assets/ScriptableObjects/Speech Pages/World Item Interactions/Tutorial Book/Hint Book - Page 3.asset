@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speechStyle: 1
   speakerName: Hint #3
-  speechText: If you also hold the X key in a dialog, you'll fast forward the text.
+  speechText: If you hold the X key while walking, you'll start to run!
   speakerSprite: {fileID: 0}
   isDialog: 0
   dialogOptions: []
