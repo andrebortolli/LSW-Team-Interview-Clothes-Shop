@@ -22,6 +22,8 @@ namespace ClothesShop.Players
 
 
         private Animator playerAnimator;
+        private AnimatorOverrideController defaultAOC;
+        private AnimatorOverrideController newAOC;
         private Rigidbody2D playerRigidbody;
         private Interactable interactableObject;
 
@@ -71,7 +73,7 @@ namespace ClothesShop.Players
 
         public void TriggerEquippedItemsEvents()
         {
-            foreach(Item item in playerData.data.inventory.EquippedItems)
+            foreach (Item item in playerData.data.inventory.EquippedItems)
             {
                 item.onEquip.Raise();
             }
@@ -115,6 +117,108 @@ namespace ClothesShop.Players
                 PlayerMovement();
             }
         }
+
+        public AnimatorOverrideController FindAndReplaceAnimations(AnimatorOverrideController _baseAOC, AnimatorOverrideController _aocToApply, string _match)
+        {
+            if (_baseAOC.overridesCount != _aocToApply.overridesCount)
+            {
+                Debug.LogError("AOC override count doesn't match!");
+                return _baseAOC;
+            }
+
+            AnimatorOverrideController workingAOC = new AnimatorOverrideController(_baseAOC);
+            List<KeyValuePair<AnimationClip, AnimationClip>> workingAOCAnimPairList = new List<KeyValuePair<AnimationClip, AnimationClip>>();
+
+            workingAOC.name = "FindAndReplace Custom";
+
+            for(int i = 0; i < _baseAOC.animationClips.Length; i++)
+            {
+                Debug.Log("<color=brown>Current Animation Name:</color> " + _baseAOC.animationClips[i].name + " | " + _aocToApply.animationClips[i].name + " | " + _match);
+                if (_baseAOC.animationClips[i].name == _aocToApply.animationClips[i].name && _aocToApply.animationClips[i].name.Contains(_match))
+                {
+                    Debug.Log("<color=green>Is equal and matches: </color>" + _aocToApply.animationClips[i].name);
+                    workingAOCAnimPairList.Add(new KeyValuePair<AnimationClip, AnimationClip>(_baseAOC.animationClips[i], _aocToApply.animationClips[i]));
+                }
+                else
+                {
+                    Debug.Log("<color=red>Is not equal and/or doesn't match: </color>" + _aocToApply.animationClips[i].name);
+                    workingAOCAnimPairList.Add(new KeyValuePair<AnimationClip, AnimationClip>(_baseAOC.animationClips[i], _baseAOC.animationClips[i]));
+                }
+            }
+
+           
+            Debug.Log("Applying Overrides");
+            workingAOC.ApplyOverrides(workingAOCAnimPairList);
+
+            return workingAOC;
+        }
+
+        public void ProcessAOCs()
+        {
+            Debug.Log("ProcessAOCs Initialized");
+            AnimatorOverrideController currentAOC = new AnimatorOverrideController(playerAnimator.runtimeAnimatorController);
+
+            if (playerData.data.inventory.EquippedItems.Count == 0)
+            {
+
+            }
+
+            foreach (Item item in playerData.data.inventory.EquippedItems)
+            {
+                Debug.Log("Equipped Item Name: " + item.itemName);
+                if (item.equippableType != Item.EquippableType.NonEquippable)
+                {
+                    Debug.Log("Is equippable");
+
+                    switch (item.equippableType)
+                    {
+                        case Item.EquippableType.Body:
+                            Debug.Log("Equippable Type: Body");
+                            break;
+                        case Item.EquippableType.Hair:
+                            Debug.Log("Equippable Type: Hair");
+                            //playerAnimator.runtimeAnimatorController = item.animatorOverrideController;
+                            playerAnimator.runtimeAnimatorController = FindAndReplaceAnimations(currentAOC, item.animatorOverrideController, "_Hair");
+                            break;
+                        case Item.EquippableType.Head:
+                            Debug.Log("Equippable Type: Head");
+                            break;
+                    }
+                }
+                else
+                {
+                    Debug.Log("Is not equippable.");
+                }
+            }
+        }
+
+        public void ProcessAOC(Item _item)
+        {
+            Debug.Log("Processing Item AOC: " + _item.itemName);
+            AnimatorOverrideController currentAOC = new AnimatorOverrideController(playerAnimator.runtimeAnimatorController);
+            if (_item.equippableType != Item.EquippableType.NonEquippable)
+            {
+                Debug.Log("Item is equippable. Type: <color=yellow>" + _item.equippableType.ToString() + "</color>");
+
+                switch (_item.equippableType)
+                {
+                    case Item.EquippableType.Body:
+                        playerAnimator.runtimeAnimatorController = FindAndReplaceAnimations(currentAOC, _item.animatorOverrideController, "_Body");
+                        break;
+                    case Item.EquippableType.Hair:
+                        playerAnimator.runtimeAnimatorController = FindAndReplaceAnimations(currentAOC, _item.animatorOverrideController, "_Hair");
+                        break;
+                    case Item.EquippableType.Head:
+                        playerAnimator.runtimeAnimatorController = FindAndReplaceAnimations(currentAOC, _item.animatorOverrideController, "_Head");
+                        break;
+                }
+            }
+            else
+            {
+                Debug.Log("Item is not equippable.");
+            }
+        }
+
 
         /// <summary>
         /// Returns a unitary vector in a 4-way movement style, depending on the user input. Does not allow more than one key to be pressed at the same time.

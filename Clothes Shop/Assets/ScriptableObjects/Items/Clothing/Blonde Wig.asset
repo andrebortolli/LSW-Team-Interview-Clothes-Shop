@@ -27,5 +27,5 @@ MonoBehaviour:
   onUse: {fileID: 0}
   equippableType: 2
   isEquipped: 0
-  onEquip: {fileID: 0}
-  onUnequip: {fileID: 0}
+  onEquip: {fileID: 11400000, guid: d1e3d515d31b6a14cb305ab1537f7afa, type: 2}
+  onUnequip: {fileID: 11400000, guid: a9ba84ac08fad7449b7b669c86720ed7, type: 2}
