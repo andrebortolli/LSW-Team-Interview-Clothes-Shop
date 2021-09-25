@@ -22,8 +22,7 @@ namespace ClothesShop.Players
 
 
         private Animator playerAnimator;
-        private AnimatorOverrideController defaultAOC;
-        private AnimatorOverrideController currentAOC;
+        private AnimatorOverrideController aoc;
         private Rigidbody2D playerRigidbody;
         private Interactable interactableObject;
 
@@ -68,22 +67,36 @@ namespace ClothesShop.Players
             playerData = GetComponent<PlayerData>();
             playerAnimator = GetComponent<Animator>();
             playerRigidbody = GetComponent<Rigidbody2D>();
-            defaultAOC = new AnimatorOverrideController(playerAnimator.runtimeAnimatorController);
+            aoc = new AnimatorOverrideController(playerAnimator.runtimeAnimatorController);
+            playerAnimator.runtimeAnimatorController = aoc;
             TriggerEquippedItemsEvents();
         }
 
         public void TriggerEquippedItemsEvents()
         {
+            bool raisedClothItemEvent = false;
             foreach (Item item in playerData.data.inventory.EquippedItems)
             {
-                item.onEquip.Raise();
+                //Assumes that only equippable items will be in the equippeditems list.
+                if (item.equippableType == Item.EquippableType.Accessory)
+                {
+                    item.onEquip.Raise();
+                }
+                else
+                {
+                    if (raisedClothItemEvent == false)
+                    {
+                        item.onEquip.Raise();
+                        raisedClothItemEvent = true;
+                    }
+                }
             }
         }
 
         // Start is called before the first frame update
         void Start()
         {
-            Debug.Log(playerData.data.id + playerData.data.playerName.Value);
+            //Debug.Log(playerData.data.id + playerData.data.playerName.Value);
         }
 
         // Update is called once per frame
@@ -119,39 +132,34 @@ namespace ClothesShop.Players
             }
         }
 
-        public AnimatorOverrideController FindAndReplaceAnimations(AnimatorOverrideController _baseAOC, AnimatorOverrideController _aocToApply, string _match)
+        public List<KeyValuePair<AnimationClip, AnimationClip>> FindAndReplaceAnimations(ref List<KeyValuePair<AnimationClip, AnimationClip>> _baseAOCOverrides, ref List<KeyValuePair<AnimationClip, AnimationClip>> _aocOverridesToApply, string _match)
         {
-            if (_baseAOC.overridesCount != _aocToApply.overridesCount)
+            if (_baseAOCOverrides.Count != _aocOverridesToApply.Count)
             {
-                Debug.LogError("AOC override count doesn't match!");
-                return _baseAOC;
+                Debug.LogError("AOC override count doesn't match! Count: " + _baseAOCOverrides.Count);
+                return _baseAOCOverrides;
             }
 
-            AnimatorOverrideController workingAOC = new AnimatorOverrideController(_baseAOC);
-            List<KeyValuePair<AnimationClip, AnimationClip>> workingAOCAnimPairList = new List<KeyValuePair<AnimationClip, AnimationClip>>();
+            List<KeyValuePair<AnimationClip, AnimationClip>> returnOverrides = new List<KeyValuePair<AnimationClip, AnimationClip>>();
 
-            workingAOC.name = "FindAndReplace Custom";
 
-            for (int i = 0; i < _baseAOC.animationClips.Length; i++)
+            //Todo: null handling
+            for (int i = 0; i < _baseAOCOverrides.Count; i++)
             {
-                Debug.Log("<color=brown>Current Animation Name:</color> " + _baseAOC.animationClips[i].name + " | " + _aocToApply.animationClips[i].name + " | " + _match);
-                if (_baseAOC.animationClips[i].name == _aocToApply.animationClips[i].name && _aocToApply.animationClips[i].name.Contains(_match))
+
+                if (_baseAOCOverrides[i].Key.name == _aocOverridesToApply[i].Key.name && _baseAOCOverrides[i].Key.name.Contains(_match))
                 {
-                    Debug.Log("<color=green>Is equal and matches: </color>" + _aocToApply.animationClips[i].name);
-                    workingAOCAnimPairList.Add(new KeyValuePair<AnimationClip, AnimationClip>(_baseAOC.animationClips[i], _aocToApply.animationClips[i]));
+                    //Debug.Log("<color=green>Is equal and matches: </color>" + _baseAOCOverrides[i].Key.name);
+                    returnOverrides.Add(new KeyValuePair<AnimationClip, AnimationClip>(_baseAOCOverrides[i].Key, _aocOverridesToApply[i].Value));
                 }
                 else
                 {
-                    Debug.Log("<color=red>Is not equal and/or doesn't match: </color>" + _aocToApply.animationClips[i].name);
-                    workingAOCAnimPairList.Add(new KeyValuePair<AnimationClip, AnimationClip>(_baseAOC.animationClips[i], _baseAOC.animationClips[i]));
+                    //Debug.Log("<color=red>Is not equal and/or doesn't match: </color>" + _baseAOCOverrides[i].Key.name);
+                    returnOverrides.Add(_baseAOCOverrides[i]);
                 }
             }
 
-
-            Debug.Log("Applying Overrides");
-            workingAOC.ApplyOverrides(workingAOCAnimPairList);
-
-            return workingAOC;
+            return returnOverrides;
         }
 
         public void ProcessAllEquippedItemsAOCs()
@@ -164,16 +172,17 @@ namespace ClothesShop.Players
                     aocUpdatableItems.Add(item);
                 }
             }
+            Debug.Log("Updatable Items: " + aocUpdatableItems.Count);
+
+            NullifyOverride(ref aoc);
+
             if (aocUpdatableItems.Count != 0)
             {
                 foreach (Item item in aocUpdatableItems)
                 {
                     ProcessAOC(item);
                 }
-            }
-            else
-            {
-                playerAnimator.runtimeAnimatorController = defaultAOC;
+                playerAnimator.runtimeAnimatorController = aoc;
             }
         }
 
@@ -181,26 +190,64 @@ namespace ClothesShop.Players
         {
             Debug.Log("Processing Item AOC: " + _item.itemName);
 
-            if (currentAOC == null)
-            {
-                currentAOC = defaultAOC;
-            }
+            List<KeyValuePair<AnimationClip, AnimationClip>> baseAOCOverrides = new List<KeyValuePair<AnimationClip, AnimationClip>>(aoc.overridesCount);
+            aoc.GetOverrides(baseAOCOverrides);
 
+            List<KeyValuePair<AnimationClip, AnimationClip>> aocOverridesToApply = new List<KeyValuePair<AnimationClip, AnimationClip>>(_item.animatorOverrideController.overridesCount);
+            _item.animatorOverrideController.GetOverrides(aocOverridesToApply);
+
+            Debug.Log(OverrideListToString(baseAOCOverrides));
+            Debug.Log(OverrideListToString(aocOverridesToApply));
             switch (_item.equippableType)
             {
                 case Item.EquippableType.Body:
-                    playerAnimator.runtimeAnimatorController = FindAndReplaceAnimations(currentAOC, _item.animatorOverrideController, "_Body");
+                    aoc.ApplyOverrides(FindAndReplaceAnimations(ref baseAOCOverrides, ref aocOverridesToApply, "_Body"));
                     break;
                 case Item.EquippableType.Hair:
-                    playerAnimator.runtimeAnimatorController = FindAndReplaceAnimations(currentAOC, _item.animatorOverrideController, "_Hair");
+                    aoc.ApplyOverrides(FindAndReplaceAnimations(ref baseAOCOverrides, ref aocOverridesToApply, "_Hair"));
                     break;
                 case Item.EquippableType.Head:
-                    playerAnimator.runtimeAnimatorController = FindAndReplaceAnimations(currentAOC, _item.animatorOverrideController, "_Head");
+                    aoc.ApplyOverrides(FindAndReplaceAnimations(ref baseAOCOverrides, ref aocOverridesToApply, "_Head"));
                     break;
             }
-            currentAOC = new AnimatorOverrideController(playerAnimator.runtimeAnimatorController);
         }
 
+        private void NullifyOverride(ref AnimatorOverrideController _input)
+        {
+            List<KeyValuePair<AnimationClip, AnimationClip>> buffer = new List<KeyValuePair<AnimationClip, AnimationClip>>(_input.overridesCount);
+            _input.GetOverrides(buffer);
+
+            for (int i=0; i< _input.overridesCount; i++)
+            {
+                buffer[i] = new KeyValuePair<AnimationClip, AnimationClip>(buffer[i].Key, null);
+            }
+
+            _input.ApplyOverrides(buffer);
+        }
+
+        public string OverrideListToString(List<KeyValuePair<AnimationClip, AnimationClip>> _input)
+        {
+            string returnString = "";
+            foreach (KeyValuePair<AnimationClip, AnimationClip> keyValuePair in _input)
+            {
+                if (keyValuePair.Key != null && keyValuePair.Value != null)
+                {
+                    returnString += string.Format("<color=black>Key:</color>\t<color=blue>{0}</color>\t<color=red>\t| |\t</color>\t<color=black>Value:\t</color><color=blue>{1}</color>\n", keyValuePair.Key.name, keyValuePair.Value.name);
+                }
+                else
+                {
+                    if (keyValuePair.Key == null)
+                    {
+                        returnString += string.Format("<color=black>Key:</color>\t<color=blue>null</color>\t<color=red>\t| |\t</color>\t<color=black>Value:\t</color><color=blue>{0}</color>\n", keyValuePair.Value.name);
+                    }
+                    else
+                    {
+                        returnString += string.Format("<color=black>Key:</color>\t<color=blue>{0}</color>\t<color=red>\t| |\t</color>\t<color=black>Value:\t</color><color=blue>null</color>\n", keyValuePair.Key.name);
+                    }
+                }
+            }
+            return returnString;
+        }
 
         /// <summary>
         /// Returns a unitary vector in a 4-way movement style, depending on the user input. Does not allow more than one key to be pressed at the same time.
