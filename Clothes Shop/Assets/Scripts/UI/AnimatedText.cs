@@ -108,6 +108,14 @@ namespace ClothesShop.UI
             }
         }
 
+        private void AbortCurrentAnimation()
+        {
+            if (currentAnimationCoroutine != null)
+            {
+                StopCoroutine(currentAnimationCoroutine);
+            }
+        }
+
         ///// <summary>
         ///// This method will run the AnimateTextCoroutine on this GameObject, in a managed way that prevents more than
         ///// one coroutine executing at a time, thus preventing text corruption.
@@ -133,10 +141,7 @@ namespace ClothesShop.UI
         /// <returns>Returns the started coroutine for yields</returns>
         public Coroutine AnimateText(string _textToAnimate, bool _isDialog = false)
         {
-            if (currentAnimationCoroutine != null)
-            {
-                StopCoroutine(currentAnimationCoroutine);
-            }
+            AbortCurrentAnimation();
             currentAnimationCoroutine = StartCoroutine(AnimateTextCoroutine(_textToAnimate, _isDialog));
             return currentAnimationCoroutine;
         }
@@ -166,7 +171,7 @@ namespace ClothesShop.UI
                 textMeshProUGUI.text = "";
                 onTextAnimationNewPage?.Invoke();
 
-                
+
                 for (int j = 0; j < pages[i].Length; j++)
                 { //For each character, type them until the end of page is reached.
                     isAnimating = true;

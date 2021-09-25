@@ -72,6 +72,11 @@ namespace ClothesShop.Players
             TriggerEquippedItemsEvents();
         }
 
+        public RuntimeAnimatorController GetAnimatorRAC()
+        {
+            return playerAnimator.runtimeAnimatorController;
+        }
+
         public void TriggerEquippedItemsEvents()
         {
             bool raisedClothItemEvent = false;

@@ -29,7 +29,7 @@ namespace ClothesShop.Managers
         [SerializeField] private AnimatedText speechText;
         [SerializeField] private Image speakerPortrait;
         [SerializeField] private DialogController dialogController;
-
+        private bool cancel = false;
         [Serializable] public class OnDialogSelectionMade : UnityEvent<SpeechPageDialogOption> { }
 
         [Header("Events")]

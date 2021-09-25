@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd890bbfeb81594299c2abdc33aa78d, type: 3}
+  m_Name: Monty Python - Page 690
+  m_EditorClassIdentifier: 
+  speechStyle: 0
+  speakerName: 
+  speechText: 'Oh, Wicked, Wicked Zoot. Oh, She Is A Naughty Person And She Must
+    Pay The Penalty, And Here In Castle Anthrax, We Have But One Punishment For Setting
+    Alight The Grail-Shaped Beacon: you must tie her down on a bed and spank her.'
+  speakerSprite: {fileID: 0}
+  isDialog: 0
+  dialogOptions: []

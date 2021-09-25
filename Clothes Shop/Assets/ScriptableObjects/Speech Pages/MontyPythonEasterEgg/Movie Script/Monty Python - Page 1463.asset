@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd890bbfeb81594299c2abdc33aa78d, type: 3}
+  m_Name: Monty Python - Page 1463
+  m_EditorClassIdentifier: 
+  speechStyle: 1
+  speakerName: "French Guard"
+  speechText: "Yes, depart a lot at this time and cut the approaching any more, or we fire arrows at the tops of your heads and make castanets out of your testicles already! Ha ha haaa ha!"
+  speakerSprite: {fileID: 0}
+  isDialog: 0
+  dialogOptions: []

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd890bbfeb81594299c2abdc33aa78d, type: 3}
+  m_Name: Monty Python - Page 389
+  m_EditorClassIdentifier: 
+  speechStyle: 1
+  speakerName: Narrator
+  speechText: 'The Wise Sir Bedevere Was The First To Join King Arthur''s Knights,
+    But Other Illustrious Names Were Soon To Follow: Sir Lancelot The Brave, Sir
+    Gallahad The Pure, And Sir Robin The-Not-Quite-So-Brave-As-Sir-Lancelot, Who
+    Had Nearly Fought The Dragon Of Angnor, Who Had Nearly Stood Up To The Vicious
+    Chicken Of Bristol, And Who Had Personally Wet Himself At The Battle Of Badon
+    Hill, And The Aptly Named Sir Not-Appearing-In-This-Film. Together They Formed
+    A Band Whose Names And Deeds Were To Be Retold Throughout The Centuries: The
+    Knights of the Round Table.'
+  speakerSprite: {fileID: 0}
+  isDialog: 0
+  dialogOptions: []

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd890bbfeb81594299c2abdc33aa78d, type: 3}
+  m_Name: Monty Python - Page 646
+  m_EditorClassIdentifier: 
+  speechStyle: 1
+  speakerName: "Zoot: Oh, I Am Afraid Our Life Must Seem Very Dull And Quiet Compared To Yours. We Are But Eight Score Young Blondes And Brunettes, All Between Sixteen And Nineteen-And-A-Half, Cut Off In This Castle With No One To Protect Us. Oooh. It Is A Lonely Life"
+  speechText: "bathing, dressing, undressing, knitting exciting underwear. We are just not used to handsome knights. Nay. Nay. Come. Come. You may lie here. Oh, but you are wounded!"
+  speakerSprite: {fileID: 0}
+  isDialog: 0
+  dialogOptions: []

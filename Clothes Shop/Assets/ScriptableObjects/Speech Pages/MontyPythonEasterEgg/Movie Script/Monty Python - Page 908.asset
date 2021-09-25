@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd890bbfeb81594299c2abdc33aa78d, type: 3}
+  m_Name: Monty Python - Page 908
+  m_EditorClassIdentifier: 
+  speechStyle: 1
+  speakerName: Lancelot
+  speechText: 'Concorde! Concorde! Speak To Me! ''To Whoever Finds This Note: I have
+    been imprisoned by my father, who wishes me to marry against my will. Please,
+    please, please come and rescue me. I am in the Tall Tower of Swamp Castle.''
+    At last! A call! A cry of distress! This could be the sign that leads us to the
+    Holy Grail! Brave, brave Concorde, you shall not have died in vain!'
+  speakerSprite: {fileID: 0}
+  isDialog: 0
+  dialogOptions: []
