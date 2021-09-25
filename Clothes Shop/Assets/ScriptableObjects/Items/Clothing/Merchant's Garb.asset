@@ -17,10 +17,8 @@ MonoBehaviour:
   description: Something about this feels oddly familiar.
   value: 50
   resellValue: 25
-  uiSprite: {fileID: 4743604252110829558, guid: 385f0825d6d9f9947a7fe61f04f971ee,
-    type: 3}
-  previewSprite: {fileID: 4743604252110829558, guid: 385f0825d6d9f9947a7fe61f04f971ee,
-    type: 3}
+  uiSprite: {fileID: 21300000, guid: 7f836a254a9b8504fb9c6ea12e112fb3, type: 3}
+  previewSprite: {fileID: 21300000, guid: 7f836a254a9b8504fb9c6ea12e112fb3, type: 3}
   animatorOverrideController: {fileID: 22100000, guid: 6f7488818d0775042ac2ec471baf05cb,
     type: 2}
   singleUse: 0

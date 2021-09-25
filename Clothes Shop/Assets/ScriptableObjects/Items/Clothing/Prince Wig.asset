@@ -12,15 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d9a67a0a2f4714abe7b5b86b36d138, type: 3}
   m_Name: Prince Wig
   m_EditorClassIdentifier: 
-  id: 3
+  id: 6
   itemName: Prince's Wig
   description: Yes, make sure he doesn't leave.
   value: 50
   resellValue: 25
-  uiSprite: {fileID: 3704470676555248339, guid: 4f804b7294fcc1c48af1c0912531560b,
-    type: 3}
-  previewSprite: {fileID: 3704470676555248339, guid: 4f804b7294fcc1c48af1c0912531560b,
-    type: 3}
+  uiSprite: {fileID: 21300000, guid: 8b82553f30b555541b9f1e1268a71d0f, type: 3}
+  previewSprite: {fileID: 21300000, guid: 8b82553f30b555541b9f1e1268a71d0f, type: 3}
   animatorOverrideController: {fileID: 22100000, guid: 50c27726abdba8e4e8d2da0dcd3aee1f,
     type: 2}
   singleUse: 0

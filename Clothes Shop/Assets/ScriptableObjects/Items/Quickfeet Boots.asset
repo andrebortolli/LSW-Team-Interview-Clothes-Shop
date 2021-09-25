@@ -24,7 +24,7 @@ MonoBehaviour:
   animatorOverrideController: {fileID: 0}
   singleUse: 0
   onUse: {fileID: 0}
-  equippableType: 4
+  equippableType: 5
   isEquipped: 0
   onEquip: {fileID: 11400000, guid: c81f6f4d105e61843a811c66b6bb390c, type: 2}
   onUnequip: {fileID: 11400000, guid: 8936cf96e762d4440bc49e9cc966c827, type: 2}
