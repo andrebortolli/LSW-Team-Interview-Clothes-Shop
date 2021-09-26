@@ -65,3 +65,23 @@ The player character is separated into three parts: body, hair and head. By sepa
 # 3. Conclusion
 	
 By doing this interview task, I’ve learned and practiced many things and implemented new scripts that I had never implemented before. It was quite challenging and fun. I finished the main requirements in about 85 hours out of the 96 hour-limit. Using the ScriptableObject / Event combo can become really convoluted to program and understand, however, once you have the programming part of it over, it becomes more modular as you can reuse objects over and over.
+
+# 4. Third-party Assets
+
+All scripts were written during the interview task, with the exception of:
+* [Game Architecture with Scriptable Objects](https://youtu.be/raQ3iHhE_Kk) by Ryan Hipple;
+* [CoroutineWithData](https://answers.unity.com/questions/24640/how-do-i-return-a-value-from-a-coroutine.html) (not used) by Ted-Bigham;
+* [ExtensionMethods](https://stackoverflow.com/questions/4398270/how-to-split-string-preserving-whole-words/17571171#17571171) by JonLord;
+
+All graphical assets were pre-made assets:
+* [2D Tiles and Sprites](https://opengameart.org/content/lots-of-free-2d-tiles-and-sprites-by-hyptosis) by Hyptosis;
+* [Sprite Pack - Fantasy Male Mage](https://red-baby.itch.io/sprite-pack-fantasy-male-mage) by WitPOP;
+* [Top down RPG characters](https://arcadeisland.itch.io/top-down-rpg-characters) by Arcade-Island;
+* [Generic 16 * 16 Tileset](https://opengameart.org/content/generic-platformer-tileset-16x16) (not used) by Ojas Sabadra
+
+All sound assets were pre-made assets:
+* [Typewriter SFX](https://mixkit.co/free-sound-effects/typewriter/) by Mixkit;
+* [The Hero BGM](https://github.com/andrebortolli/LSW-Team-Interview-Clothes-Shop/raw/main/Clothes%20Shop/Assets/Music/The%20Hero.mp3) by Guilherme Ferrari, recorded by me;
+
+Text assets:
+* [Monty Python & The Holy Grail - Movie Script](http://www.montypython.50webs.com/Holy_Grail_Scripts.htm)
